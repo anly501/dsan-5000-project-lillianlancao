@@ -3,3 +3,76 @@ title: "Data Cleaning"
 format: html
 ---
 
+# *This is Just Initial Data Cleaning*
+
+- I will only focus on the first part and the fourth part because they are pretty messy
+- The second and third part will be cleaned later because they are relatively easy to clean
+
+
+# First Part
+
+- Clean **"virtual_school_2015.csv"**
+- You can see and get the row data [here](https://github.com/anly501/dsan-5000-project-lillianlancao/tree/main/data/00-raw-data)
+
+- **Clean Notes**: since "virtual_school_2015.csv" and "virtual_school_2020" are very similar in terms of structure and variables, so here we will just how the cleaning process of "virtual_school_2015.csv" as an demonstration
+
+- **Clean Plan**: "virtual_school_2015.csv" is a large dataset that contains 52 variables and I plan to use some of them, so I will **subset the dataset** first. And then I will **change some quantative variables to be qualitative** variables because some data was transformed into numeric values and lose their original meanings. Therefore, I need to bring their original meaning back for future use.
+
+**Before(this is raw data)**
+
+- We can see there are a lot of variables there, so I plan to make a subset
+
+![virtual_school_2015](./images/virtual_school_2015_p1.png)
+
+
+**During Data Cleaning**
+
+- You can get the **code** [here](https://github.com/anly501/dsan-5000-project-lillianlancao/tree/main/codes/01-data-gathering) to see how the data was gathered and cleaned
+
+- I use **tidyverse** package in R to do the cleaning
+
+- First choose some variables that I want to use to make a subset
+
+
+![subset of virtual_school_2015](./images/subset_15.png)
+
+
+- Then we will filter the missing values. I don't plan to replace the missing values because the enrollment of students is unique to every school, therefore making it meaningless to replace the missing enrollment value with any other kind of numbers. **Before filtering and subsetting, the dataset has 709 rows, 52 columns. After filtering and subsetting, it has 660 rows, 9 columns. We lost around 7% data**
+
+- The we replace the numeric values of "school_level", "school_type", "charter", "magnet" to be qualitative values
+
+
+**After(this is a cleaned version)**
+
+- You can get the cleaned data [here](https://github.com/anly501/dsan-5000-project-lillianlancao/tree/main/data/01-modified-data)
+
+![cleaned_subset of virtual_school_2015](./images/sub15.png)
+
+
+
+# Second Part
+
+- It will be cleaned later
+
+
+# Third Part
+
+- It will be cleaned later
+
+
+# Fourth Part
+
+- Clean text data "education_trend.json"
+- You can get the raw data [here](https://github.com/anly501/dsan-5000-project-lillianlancao/tree/main/data/00-raw-data)
+- We need to **vectorize** the data first
+
+**Before(this is raw data)**
+
+![eudcation_trend](./images/text_data.png){width=600px height=300px}
+
+
+**After(this is a cleaned version)**
+
+- You can find the cleaned text data [here](https://github.com/anly501/dsan-5000-project-lillianlancao/tree/main/data/01-modified-data)
+
+![transformed_dataframe](./images/cleaned_textdata.png)

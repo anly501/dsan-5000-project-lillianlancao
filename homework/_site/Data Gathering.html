@@ -129,6 +129,12 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./Data Cleaning.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Cleaning</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./Data Exploration.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Data Exploration</span></a>
   </div>
@@ -169,7 +175,16 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#first-part" id="toc-first-part" class="nav-link active" data-scroll-target="#first-part">** First Part **</a></li>
+  <li><a href="#second-part" id="toc-second-part" class="nav-link" data-scroll-target="#second-part">** Second Part **</a></li>
+  <li><a href="#third-part" id="toc-third-part" class="nav-link" data-scroll-target="#third-part">** Third Part **</a></li>
+  <li><a href="#fourth-part" id="toc-fourth-part" class="nav-link" data-scroll-target="#fourth-part">** Fourth Part **</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -191,8 +206,142 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
+<section id="first-part" class="level1">
+<h1>** First Part **</h1>
+<p>Number of Virtual Schools in Year 2015 and Year 2020</p>
+<ul>
+<li>Collect Method: Urban Institute’s Education Data API <a href="https://educationdata.urban.org/documentation/schools.html#ccd_directory">Urban Institute</a></li>
+</ul>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Datasets Name <a href="https://github.com/anly501/dsan-5000-project-lillianlancao/tree/main/data/00-raw-data">Raw Data Access</a></th>
+<th>description</th>
+<th>format</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>virtual_school_2015</td>
+<td>709 rows, 52 columns</td>
+<td>.csv</td>
+</tr>
+<tr class="even">
+<td>virtual_school_2020</td>
+<td>818 rows, 52 columns</td>
+<td>.csv</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Raw Data Overview</strong></p>
+<ul>
+<li>These two datasets are basically same in terms of structure and variables, so I just use one of them as an example</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/virtual_school_2015_p1.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">virtual_school_2015</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/virtual_school_2015_p2.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">virtual_school_2015</figcaption>
+</figure>
+</div>
+</section>
+<section id="second-part" class="level1">
+<h1>** Second Part **</h1>
+<p>Distance Education in Title IV Institutions</p>
+<ul>
+<li>Collect Method: Download from a website called <a href="https://www.nsf.gov/nsb/sei/edTool/data/college-03.html">STEM Education Data</a></li>
+</ul>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Datasets Name <a href="https://github.com/anly501/dsan-5000-project-lillianlancao/tree/main/data/00-raw-data">Raw Data Access</a></th>
+<th>description</th>
+<th>format</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>distance_education</td>
+<td>31 rows, 5 columns</td>
+<td>.xls</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Raw Data Overview</strong></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/distance_education.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">distance_education</figcaption>
+</figure>
+</div>
+</section>
+<section id="third-part" class="level1">
+<h1>** Third Part **</h1>
+<p>Distance education in Title IV institutions</p>
+<ul>
+<li>Collect Method: Download from an organization called <a href="https://oecd.ai/en/data?selectedArea=ai-research&amp;selectedVisualization=ai-publications-time-series-by-country">OECD</a></li>
+</ul>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Datasets Name <a href="https://github.com/anly501/dsan-5000-project-lillianlancao/tree/main/data/00-raw-data">Raw Data Access</a></th>
+<th>description</th>
+<th>format</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>AI_pub</td>
+<td>264 rows, 3 columns</td>
+<td>.csv</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Raw Data Overview</strong></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/AI_pub.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">AI_pub</figcaption>
+</figure>
+</div>
+</section>
+<section id="fourth-part" class="level1">
+<h1>** Fourth Part **</h1>
+<p>Education Trend Text Data</p>
+<ul>
+<li>Collect Method: <a href="https://newsapi.org/">NewsAPI</a></li>
+</ul>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Datasets Name <a href="https://github.com/anly501/dsan-5000-project-lillianlancao/tree/main/data/00-raw-data">Raw Data Access</a></th>
+<th>description</th>
+<th>format</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>AI_pub</td>
+<td>100 documents</td>
+<td>.json</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Raw Data Overview</strong></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/text_data.png" width="600" height="300" class="figure-img"></p>
+<figcaption class="figure-caption">education_trend</figcaption>
+</figure>
+</div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

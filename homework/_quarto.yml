@@ -15,6 +15,8 @@ website:
         text: Data
       - href: Data Gathering.qmd
         text: Data Gathering
+      - href: Data Cleaning.qmd
+        text: Data Cleaning
       - href: Data Exploration.qmd
         text: Data Exploration
       - href: Clustering.qmd

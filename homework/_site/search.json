@@ -70,6 +70,13 @@
     "text": "Footnotes\n\n\nHere is the footnote.↩︎"
   },
   {
+    "objectID": "Data Gathering.html",
+    "href": "Data Gathering.html",
+    "title": "Data Gathering",
+    "section": "",
+    "text": "** First Part **\nNumber of Virtual Schools in Year 2015 and Year 2020\n\nCollect Method: Urban Institute’s Education Data API Urban Institute\n\n\n\n\nDatasets Name Raw Data Access\ndescription\nformat\n\n\n\n\nvirtual_school_2015\n709 rows, 52 columns\n.csv\n\n\nvirtual_school_2020\n818 rows, 52 columns\n.csv\n\n\n\nRaw Data Overview\n\nThese two datasets are basically same in terms of structure and variables, so I just use one of them as an example\n\n\n\n\nvirtual_school_2015\n\n\n\n\n\nvirtual_school_2015\n\n\n\n\n** Second Part **\nDistance Education in Title IV Institutions\n\nCollect Method: Download from a website called STEM Education Data\n\n\n\n\nDatasets Name Raw Data Access\ndescription\nformat\n\n\n\n\ndistance_education\n31 rows, 5 columns\n.xls\n\n\n\nRaw Data Overview\n\n\n\ndistance_education\n\n\n\n\n** Third Part **\nDistance education in Title IV institutions\n\nCollect Method: Download from an organization called OECD\n\n\n\n\nDatasets Name Raw Data Access\ndescription\nformat\n\n\n\n\nAI_pub\n264 rows, 3 columns\n.csv\n\n\n\nRaw Data Overview\n\n\n\nAI_pub\n\n\n\n\n** Fourth Part **\nEducation Trend Text Data\n\nCollect Method: NewsAPI\n\n\n\n\nDatasets Name Raw Data Access\ndescription\nformat\n\n\n\n\nAI_pub\n100 documents\n.json\n\n\n\nRaw Data Overview\n\n\n\neducation_trend"
+  },
+  {
     "objectID": "About Me.html",
     "href": "About Me.html",
     "title": "About Me",
@@ -103,5 +110,12 @@
     "title": "Slide",
     "section": "Eiger",
     "text": "Eiger\nSchool anxiety is one of the main problems faced by teachers and school counselors. This problem attracts special attention for teachers - practitioners, as it is a clear sign of school maladaptation in children, which adversely affects all spheres of their life: not only the studies but also communication, both inside and outside the school, health and general level of mental development and psychological well-being. (Kostyunina and Drozdikova-Zaripova 2016)\n\n\n\n\n\n\n\nKostyunina, Nadezhda Yu, and Albina R Drozdikova-Zaripova. 2016. “Adolescents’ School Anxiety Correction by Means of Mandala Art Therapy.” International Journal of Environmental and Science Education 11 (6): 1105–16."
+  },
+  {
+    "objectID": "Data Cleaning.html",
+    "href": "Data Cleaning.html",
+    "title": "Data Cleaning",
+    "section": "",
+    "text": "This is Just Initial Data Cleaning\n\nI will only focus on the first part and the fourth part because they are pretty messy\nThe second and third part will be cleaned later because they are relatively easy to clean\n\n\n\nFirst Part\n\nClean “virtual_school_2015.csv”\nYou can see and get the row data here\nClean Notes: since “virtual_school_2015.csv” and “virtual_school_2020” are very similar in terms of structure and variables, so here we will just how the cleaning process of “virtual_school_2015.csv” as an demonstration\nClean Plan: “virtual_school_2015.csv” is a large dataset that contains 52 variables and I plan to use some of them, so I will subset the dataset first. And then I will change some quantative variables to be qualitative variables because some data was transformed into numeric values and lose their original meanings. Therefore, I need to bring their original meaning back for future use.\n\nBefore(this is raw data)\n\nWe can see there are a lot of variables there, so I plan to make a subset\n\n\n\n\nvirtual_school_2015\n\n\nDuring Data Cleaning\n\nYou can get the code here to see how the data was gathered and cleaned\nI use tidyverse package in R to do the cleaning\nFirst choose some variables that I want to use to make a subset\n\n\n\n\nsubset of virtual_school_2015\n\n\n\nThen we will filter the missing values. I don’t plan to replace the missing values because the enrollment of students is unique to every school, therefore making it meaningless to replace the missing enrollment value with any other kind of numbers. Before filtering and subsetting, the dataset has 709 rows, 52 columns. After filtering and subsetting, it has 660 rows, 9 columns. We lost around 7% data\nThe we replace the numeric values of “school_level”, “school_type”, “charter”, “magnet” to be qualitative values\n\nAfter(this is a cleaned version)\n\nYou can get the cleaned data here\n\n\n\n\ncleaned_subset of virtual_school_2015\n\n\n\n\nSecond Part\n\nIt will be cleaned later\n\n\n\nThird Part\n\nIt will be cleaned later\n\n\n\nFourth Part\n\nClean text data “education_trend.json”\nYou can get the raw data here\nWe need to vectorize the data first\n\nBefore(this is raw data)\n\n\n\neudcation_trend\n\n\nAfter(this is a cleaned version)\n\nYou can find the cleaned text data here\n\n\n\n\ntransformed_dataframe"
   }
 ]
