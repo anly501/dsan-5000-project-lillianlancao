@@ -1,0 +1,20 @@
+---
+title: "Feature selection for text data"
+format: html
+---
+
+# Method
+
+- Data preprocessing involves the conversion of text data into a numerical format, which is essential for training machine learning models like Naive Bayes. This transformation can be achieved using methods like TF-IDF (Term Frequency-Inverse Document Frequency) or Count Vectorization, which help represent the text as numerical features that can be utilized effectively by the Naive Bayes algorithm. 
+
+- We will vectorize the titles using Count Vectorization. When we convert text data into a numerical format using Count Vectorization, each unique word or token in the text becomes a feature. The value of the feature is the count of how many times that word appears in the document. In our case, the document specifically refers to titles of the news paper. So if our dataset has 10,000 unique words across all the titles, we have 10,000 features.
+
+- Feature selection is a technique used to enhance a model's performance and mitigate overfitting by picking out the most pertinent features or words from a larger pool. This process involves reducing the total number of unique words to a smaller, more relevant subset that can effectively predict the article's topic or class labels.
+
+- We will apply feature selection using the chi-squared test to reduce the number of features to the most informative ones. In text data, there can be a vast number of features (every unique word can be a feature), many of which may not be useful for making predictions. The chi-squared test is a way to handle this high dimensionality by filtering out the noise and keeping only those features that are statistically significant.
+
+- Below is part of the selected features (Top 20)
+
+![feature selection](./images/feature_text.png)
+
+

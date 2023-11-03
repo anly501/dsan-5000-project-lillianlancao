@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Portfolio - Conclusions</title>
+<title>Portfolio - Introduction to Naive Bayes</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -72,7 +72,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Conclusions.html">Conclusions</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Naive Bayes.html">Naive Bayes</a></li><li class="breadcrumb-item"><a href="./Introduction to Naive Bayes.html">Introduction to Naive Bayes</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -150,7 +150,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Introduction to Naive Bayes.html" class="sidebar-item-text sidebar-link">
+  <a href="./Introduction to Naive Bayes.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Introduction to Naive Bayes</span></a>
   </div>
 </li>
@@ -212,7 +212,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Conclusions.html" class="sidebar-item-text sidebar-link active">
+  <a href="./Conclusions.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Conclusions</span></a>
   </div>
 </li>
@@ -222,14 +222,23 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
+  <li><a href="#probabilistic-nature-of-naive-bayes" id="toc-probabilistic-nature-of-naive-bayes" class="nav-link" data-scroll-target="#probabilistic-nature-of-naive-bayes">Probabilistic Nature of Naive Bayes</a></li>
+  <li><a href="#objectives-and-plans-through-naive-bayes-classification" id="toc-objectives-and-plans-through-naive-bayes-classification" class="nav-link" data-scroll-target="#objectives-and-plans-through-naive-bayes-classification">Objectives and Plans through Naive Bayes classification</a></li>
+  <li><a href="#different-variants-of-naive-bayes" id="toc-different-variants-of-naive-bayes" class="nav-link" data-scroll-target="#different-variants-of-naive-bayes">Different Variants of Naive Bayes</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Conclusions</h1>
+<h1 class="title">Introduction to Naive Bayes</h1>
 </div>
 
 
@@ -244,8 +253,37 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
+<section id="overview" class="level1">
+<h1>Overview</h1>
+<p><em>Naive Bayes is a classification algorithm based on Bayes’ theorem, which describes the probability of an event based on prior knowledge of conditions related to the event. It is called “naive” because it makes the simplifying assumption that the features used to make the classification decision are conditionally independent given the class label.</em></p>
+<p><strong>The Naive Bayes classifier is based on Bayes’ theorem, which is expressed as:</strong></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/formula.jpeg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">formula</figcaption>
+</figure>
+</div>
+<p><em>Source: Chatgpt</em></p>
+</section>
+<section id="probabilistic-nature-of-naive-bayes" class="level1">
+<h1>Probabilistic Nature of Naive Bayes</h1>
+<p><em>Naive Bayes is a probabilistic classifier, meaning that for a given input, it predicts the probability of each possible class label and selects the label with the highest probability. This approach allows it to quantify uncertainty and provide more information about the predictions it makes, which can be crucial in decision-making processes.</em></p>
+</section>
+<section id="objectives-and-plans-through-naive-bayes-classification" class="level1">
+<h1>Objectives and Plans through Naive Bayes classification</h1>
+<p><strong>Predicting Adaptability Level:</strong> Predict the adaptability level of students to online education based on various features present in the dataset.</p>
+<p><strong>Target Variable:</strong> Adaptability Level <br> <strong>Features:</strong> Other variables in the dataset which could include demographic information, access to resources, previous online education experience, etc.</p>
+</section>
+<section id="different-variants-of-naive-bayes" class="level1">
+<h1>Different Variants of Naive Bayes</h1>
+<ul>
+<li><p>Gaussian Naive Bayes assumes that the features follow a Gaussian or normal distribution. It is well-suited for continuous data, making it a popular choice in fields like medicine for predicting outcomes based on various continuous test results. For instance, it could be used to predict whether a tumor is malignant or benign based on features like size, shape, and texture.</p></li>
+<li><p>Multinomial Naive Bayes operates on discrete data representing counts or frequencies of events. This variant excels in text classification tasks, such as spam detection or sentiment analysis, where features might represent the frequency of words in a document. A typical application could be classifying news articles into different categories based on the occurrence of specific terms.</p></li>
+<li><p>Bernoulli Naive Bayes is designed to work with binary or boolean features, indicating the presence or absence of a feature. It is also commonly used in text classification, where features could represent the occurrence of words in a document. For example, it might be used to detect spam emails based on whether certain trigger words are present or absent.</p></li>
+</ul>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Portfolio - Conclusions</title>
+<title>Portfolio - Feature selection for text data</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -72,7 +72,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Conclusions.html">Conclusions</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Naive Bayes.html">Naive Bayes</a></li><li class="breadcrumb-item"><a href="./Feature selection text.html">Feature selection for text data</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -168,7 +168,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Feature selection text.html" class="sidebar-item-text sidebar-link">
+  <a href="./Feature selection text.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Feature selection for text data</span></a>
   </div>
 </li>
@@ -212,7 +212,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Conclusions.html" class="sidebar-item-text sidebar-link active">
+  <a href="./Conclusions.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Conclusions</span></a>
   </div>
 </li>
@@ -222,14 +222,20 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#method" id="toc-method" class="nav-link active" data-scroll-target="#method">Method</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Conclusions</h1>
+<h1 class="title">Feature selection for text data</h1>
 </div>
 
 
@@ -244,8 +250,24 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
+<section id="method" class="level1">
+<h1>Method</h1>
+<ul>
+<li><p>Data preprocessing involves the conversion of text data into a numerical format, which is essential for training machine learning models like Naive Bayes. This transformation can be achieved using methods like TF-IDF (Term Frequency-Inverse Document Frequency) or Count Vectorization, which help represent the text as numerical features that can be utilized effectively by the Naive Bayes algorithm.</p></li>
+<li><p>We will vectorize the titles using Count Vectorization. When we convert text data into a numerical format using Count Vectorization, each unique word or token in the text becomes a feature. The value of the feature is the count of how many times that word appears in the document. In our case, the document specifically refers to titles of the news paper. So if our dataset has 10,000 unique words across all the titles, we have 10,000 features.</p></li>
+<li><p>Feature selection is a technique used to enhance a model’s performance and mitigate overfitting by picking out the most pertinent features or words from a larger pool. This process involves reducing the total number of unique words to a smaller, more relevant subset that can effectively predict the article’s topic or class labels.</p></li>
+<li><p>We will apply feature selection using the chi-squared test to reduce the number of features to the most informative ones. In text data, there can be a vast number of features (every unique word can be a feature), many of which may not be useful for making predictions. The chi-squared test is a way to handle this high dimensionality by filtering out the noise and keeping only those features that are statistically significant.</p></li>
+<li><p>Below is part of the selected features (Top 20)</p></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/feature_text.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">feature selection</figcaption>
+</figure>
+</div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

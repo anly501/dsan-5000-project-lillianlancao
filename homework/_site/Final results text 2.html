@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Portfolio - Conclusions</title>
+<title>Portfolio - Final results(text)</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -72,7 +72,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Conclusions.html">Conclusions</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Naive Bayes.html">Naive Bayes</a></li><li class="breadcrumb-item"><a href="./Final results text.html">Final results(text)</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -180,7 +180,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Final results text.html" class="sidebar-item-text sidebar-link">
+  <a href="./Final results text.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Final results(text)</span></a>
   </div>
 </li>
@@ -212,7 +212,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Conclusions.html" class="sidebar-item-text sidebar-link active">
+  <a href="./Conclusions.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Conclusions</span></a>
   </div>
 </li>
@@ -222,14 +222,22 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#results-from-the-naive-bayes-model" id="toc-results-from-the-naive-bayes-model" class="nav-link active" data-scroll-target="#results-from-the-naive-bayes-model">Results from the Naive Bayes Model</a></li>
+  <li><a href="#evaluation-and-discussion" id="toc-evaluation-and-discussion" class="nav-link" data-scroll-target="#evaluation-and-discussion">Evaluation and Discussion</a></li>
+  <li><a href="#visualizations-of-the-results" id="toc-visualizations-of-the-results" class="nav-link" data-scroll-target="#visualizations-of-the-results">Visualizations of the results</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Conclusions</h1>
+<h1 class="title">Final results(text)</h1>
 </div>
 
 
@@ -244,8 +252,57 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
+<section id="results-from-the-naive-bayes-model" class="level1">
+<h1>Results from the Naive Bayes Model</h1>
+<ul>
+<li><p>Using optimal feature set from the previous section and fitting a final “optimal” NB model, we get the following results.</p></li>
+<li><div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/text_result.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">result</figcaption>
+</figure>
+</div></li>
+</ul>
+</section>
+<section id="evaluation-and-discussion" class="level1">
+<h1>Evaluation and Discussion</h1>
+<ul>
+<li><p>The overall accuracy of the model is 45%. This means that out of all the predictions made by the model, 45% of them were correct. While accuracy is a useful metric, it doesn’t tell the whole story, especially in cases where class distribution is imbalanced.</p></li>
+<li><p>The “Education” class has perfect precision but very low recall, suggesting that when the classifier predicts an article as “Education”, it is always correct, but it fails to identify most of the actual “Education” articles. The “Other” class has the highest F1-score, showing a better balance between precision and recall, but the precision is still under 50%. The classes “Entertainment”, “Health”, and “Politics” have zero precision and recall, which might be due to very few samples being present in the test set, making it difficult for the model to learn to predict these classes correctly. The “Technology” class has low precision and recall, indicating a struggle to correctly classify articles of this type.</p></li>
+</ul>
+</section>
+<section id="visualizations-of-the-results" class="level1">
+<h1>Visualizations of the results</h1>
+<ul>
+<li>The confusion matrix below shows the true labels vs.&nbsp;the predicted labels for each class. The diagonal elements represent the number of points for which the predicted label is equal to the true label, while the off-diagonal elements are those that are mislabeled by the classifier.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/confusion_text.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">confusion matrix</figcaption>
+</figure>
+</div>
+<ul>
+<li>This bar chart shows the precision, recall, and F1-score for each class. Precision is the ability of the classifier not to label a negative sample as positive, recall is the ability to find all positive samples, and the F1-score is a harmonic mean of precision and recall. This visualization makes it easier to compare these metrics across different classes.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/vis_text.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Precision, Recall, and F1-Score</figcaption>
+</figure>
+</div>
+<ul>
+<li>This bar graph illustrates the count of actual occurrences for each category within the testing dataset. It serves a crucial role in comprehending the distribution of these categories and pinpointing any potential class imbalances. Classes that have a limited number of instances can pose challenges for the classifier in making accurate predictions, potentially impacting the overall performance of the model.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/text_support.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Support for each class</figcaption>
+</figure>
+</div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
