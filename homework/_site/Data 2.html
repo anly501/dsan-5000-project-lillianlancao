@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Portfolio - Data Exploration</title>
+<title>Portfolio - Data</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -72,7 +72,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Data Exploration.html">Data Exploration</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Data.html">Data</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -117,7 +117,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Data.html" class="sidebar-item-text sidebar-link">
+  <a href="./Data.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Data</span></a>
   </div>
 </li>
@@ -135,7 +135,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Data Exploration.html" class="sidebar-item-text sidebar-link active">
+  <a href="./Data Exploration.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Data Exploration</span></a>
   </div>
 </li>
@@ -222,29 +222,14 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#exploratory-data-analysis-eda" id="toc-exploratory-data-analysis-eda" class="nav-link active" data-scroll-target="#exploratory-data-analysis-eda">Exploratory Data Analysis (EDA)</a></li>
-  <li><a href="#data-understanding" id="toc-data-understanding" class="nav-link" data-scroll-target="#data-understanding">Data Understanding:</a></li>
-  <li><a href="#descriptive-statistics" id="toc-descriptive-statistics" class="nav-link" data-scroll-target="#descriptive-statistics">Descriptive Statistics:</a></li>
-  <li><a href="#data-visualization" id="toc-data-visualization" class="nav-link" data-scroll-target="#data-visualization">Data Visualization:</a></li>
-  <li><a href="#correlation-analysis" id="toc-correlation-analysis" class="nav-link" data-scroll-target="#correlation-analysis">Correlation Analysis:</a></li>
-  <li><a href="#hypothesis-generation" id="toc-hypothesis-generation" class="nav-link" data-scroll-target="#hypothesis-generation">Hypothesis Generation:</a></li>
-  <li><a href="#data-grouping-and-segmentation" id="toc-data-grouping-and-segmentation" class="nav-link" data-scroll-target="#data-grouping-and-segmentation">Data Grouping and Segmentation:</a></li>
-  <li><a href="#identifying-outliers" id="toc-identifying-outliers" class="nav-link" data-scroll-target="#identifying-outliers">Identifying Outliers:</a></li>
-  <li><a href="#report-and-discussion-of-methods-and-findings" id="toc-report-and-discussion-of-methods-and-findings" class="nav-link" data-scroll-target="#report-and-discussion-of-methods-and-findings">Report and discussion of methods and findings:</a></li>
-  <li><a href="#tools-and-software" id="toc-tools-and-software" class="nav-link" data-scroll-target="#tools-and-software">Tools and Software:</a></li>
-  </ul>
-</nav>
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Data Exploration</h1>
+<h1 class="title">Data</h1>
 </div>
 
 
@@ -259,134 +244,8 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="exploratory-data-analysis-eda" class="level1">
-<h1>Exploratory Data Analysis (EDA)</h1>
-<p>I have several datasets that will be used for this project, and here I will do EDA mainly for the “students_adaptability_level_online_education” dataset.</p>
-</section>
-<section id="data-understanding" class="level1">
-<h1>Data Understanding:</h1>
-<ul>
-<li><p><strong>Data Source:</strong> Students’ Adaptability Level Prediction in Online Education using Machine Learning Approaches (DOI: 10.1109/ICCCNT51525.2021.9579741) You can find the raw data <a href="https://github.com/anly501/dsan-5000-project-lillianlancao/tree/main/data/00-raw-data">here</a></p></li>
-<li><p><strong>Data Information:</strong> There are 14 features in total and all of them are ‘object’ type.</p></li>
-</ul>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="./images/eda-1.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">data info</figcaption>
-</figure>
-</div>
-</section>
-<section id="descriptive-statistics" class="level1">
-<h1>Descriptive Statistics:</h1>
-<ul>
-<li><p><strong>Notes:</strong> Most of the data in this dataset is in categorical form, so we will not try to compute descriptive statistics like mean or median. Instead, we will provide frequency distributions to get a rough sense of how these data are distributed.</p></li>
-<li><p><strong>Comments:</strong> Here we can see that some of the variables are binary variables and most of them contains less than 5 values.</p></li>
-</ul>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="./images/eda-2.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">frequency</figcaption>
-</figure>
-</div>
-</section>
-<section id="data-visualization" class="level1">
-<h1>Data Visualization:</h1>
-<ul>
-<li><strong>Comments:</strong> First we do univariate analysis for our dataset. These visualizations provide a good overview of the distribution of different variables in the dataset.</li>
-</ul>
-<p><strong>Key Observations:</strong></p>
-<ol type="1">
-<li><p>There are more boys than girls in the dataset. Most students are in the 21-25 age range, followed by 16-20. There are fewer students in the other age ranges.</p></li>
-<li><p>A majority of students are from non-government institutions and most students are not IT students.</p></li>
-<li><p>Most students have a proper place to participate in online classes. More students use mobile data compared to Wi-Fi.</p></li>
-<li><p>Most students are from families with a mid-level financial condition, followed by poor, and then rich.</p></li>
-</ol>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="./images/eda-3.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Univariate</figcaption>
-</figure>
-</div>
-</section>
-<section id="correlation-analysis" class="level1">
-<h1>Correlation Analysis:</h1>
-<ul>
-<li><strong>Comments:</strong> correlation analysis typically applies to numerical data, but all the variables in our dataset are categorical. For categorical variables, we can use other methods like Heatmaps to show associations or dependencies between variables. The plots below can give us some insights into our variables.</li>
-</ul>
-<p><strong>Key Findings:</strong></p>
-<ol type="1">
-<li><p>Both genders show a similar distribution across different adaptivity levels, with the majority in the moderate adaptivity level.</p></li>
-<li><p>University students are more likely to have a high adaptivity level compared to school and college students.</p></li>
-<li><p>Students from mid financial condition families are spread across all adaptivity levels, with the majority in the moderate level. Students from rich families are mostly in the moderate and high adaptivity levels, with very few in the low category.</p></li>
-<li><p>Students using computers tend to have higher adaptivity levels compared to those using mobiles or tablets.</p></li>
-</ol>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="./images/eda-4.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Bivariate</figcaption>
-</figure>
-</div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="./images/eda-5.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">heatmap</figcaption>
-</figure>
-</div>
-</section>
-<section id="hypothesis-generation" class="level1">
-<h1>Hypothesis Generation:</h1>
-<p><strong>Notes:</strong> Part of my project is to examine what kind of factors can influence student’s online learning. Therefore, we can generate some hypothesis regarding this topic.</p>
-<p><strong>Hypothesis:</strong></p>
-<ol type="1">
-<li>Gender and Adaptivity Level:
-<ul>
-<li>Null Hypothesis: There is no significant difference in adaptivity levels between male and female students.</li>
-<li>Alternative Hypothesis: There is a significant difference in adaptivity levels between male and female students.</li>
-</ul></li>
-<li>Financial Condition and Adaptivity Level:
-<ul>
-<li>Null Hypothesis: The financial condition of a student’s family does not affect their adaptivity level to online education.</li>
-<li>Alternative Hypothesis: The financial condition of a student’s family affects their adaptivity level to online education.</li>
-</ul></li>
-</ol>
-</section>
-<section id="data-grouping-and-segmentation" class="level1">
-<h1>Data Grouping and Segmentation:</h1>
-<ul>
-<li><p><strong>Notes:</strong> Here we group the data by education level (University, College, School) to analyze how adaptivity levels and other factors vary across different education levels.</p></li>
-<li><p><strong>Findings:</strong> The gender distribution is fairly balanced across all education levels; Students from mid financial conditions are prevalent across all education levels; There is a higher proportion of rich students in the university level compared to school and college.</p></li>
-</ul>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="./images/eda-6.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">education-level</figcaption>
-</figure>
-</div>
-</section>
-<section id="identifying-outliers" class="level1">
-<h1>Identifying Outliers:</h1>
-<ul>
-<li><p><strong>Notes:</strong> Outlier detection is typically applied to numerical data, where statistical methods can be used to identify values that deviate significantly from the rest of the data. However, the dataset does not contain any numerical columns, so our approach to outlier detection will need to be adjusted. We can still investigate the distribution of values in the categorical columns to identify any unusual or unexpected patterns that might indicate data quality issues.</p></li>
-<li><p><strong>Findings:</strong> Based on the unique value counts for each categorical column, there don’t appear to be any blatant anomalies or irregularities in the dataset. The values in each column seem to be consistent and within expected ranges. However, there are a few points worth noting: for example, the “0” value in the “Class Duration” column could potentially be an anomaly or a data entry error, as it’s not clear what “0” hours of class duration would mean in the context of online education. It might be worth investigating these entries further to understand if they are valid or if they represent a data quality issue.</p></li>
-</ul>
-<p><img src="./images/eda-7.png" alt="outlier detection" width="300" height="360"></p>
-</section>
-<section id="report-and-discussion-of-methods-and-findings" class="level1">
-<h1>Report and discussion of methods and findings:</h1>
-<ul>
-<li><p>The dataset contains 1205 entries with 14 categorical variables.There are no missing values, and all categorical variables contain expected and consistent values</p></li>
-<li><p>When delving into individual variables, we observe a gender distribution skewing slightly towards boys, and a prominent presence of students in the 11-25 age range, with the majority being at the school or university level. A significant portion of these students come from non-government institutions and reside in urban areas. Despite the limited number of IT students, the dataset provides a broad overview of the student demographic.</p></li>
-<li><p>In terms of technology access and internet connectivity, a larger number of students have mobile data connections, primarily on 4G networks, and use mobile devices for online education. This is coupled with a general experience of low load-shedding across the board. Focusing on their online education experience, most students have 1-3 hours of online classes, but there is a noticeable lack of engagement with Learning Management Systems.</p></li>
-<li><p>When examining the adaptability levels in relation to other variables, certain patterns emerge. Higher adaptability is often linked with being an IT student, having stable internet connectivity (preferably wifi), using computers for online education, engaging with longer online classes, and having access to Learning Management Systems. Financial stability also plays a crucial role, with students from more affluent backgrounds exhibiting higher adaptability levels. Conversely, lower adaptability levels are more common among younger students, those from less affluent backgrounds, those experiencing frequent load-shedding, and those relying on mobile devices for online education.</p></li>
-<li><p>These insights underscore the importance of technological access and financial stability in fostering a conducive environment for online education. They highlight potential areas for intervention, such as improving internet connectivity, promoting the use of Learning Management Systems, and offering additional support to students from less privileged backgrounds to enhance their adaptability and overall experience in an online learning setting.</p></li>
-</ul>
-</section>
-<section id="tools-and-software" class="level1">
-<h1>Tools and Software:</h1>
-<p><em>Python: pandas;matplotlib;seaborn</em></p>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
