@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Portfolio - Decision Trees</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Decision Trees.html">Decision Trees</a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Portfolio</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Introduction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./About Me.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About Me</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Code.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Code</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Data Gathering.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Gathering</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Data Cleaning.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Cleaning</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Data Exploration.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Exploration</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./Naive Bayes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Naive Bayes</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Introduction to Naive Bayes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to Naive Bayes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Data Preparation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Preparation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Feature selection record.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Feature selection for record data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Feature selection text.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Feature selection for text data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Final results record.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Final results(record)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Final results text.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Final results(text)</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Clustering.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Clustering</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Dimensionality Reduction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Dimensionality Reduction</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Decision Trees.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Decision Trees</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ARM.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ARM</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Conclusions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Conclusions</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction-to-decision-tree-and-random-forest" id="toc-introduction-to-decision-tree-and-random-forest" class="nav-link active" data-scroll-target="#introduction-to-decision-tree-and-random-forest">Introduction to Decision Tree and Random Forest</a></li>
+  <li><a href="#class-distribution" id="toc-class-distribution" class="nav-link" data-scroll-target="#class-distribution">Class Distribution</a></li>
+  <li><a href="#baseline-model" id="toc-baseline-model" class="nav-link" data-scroll-target="#baseline-model">Baseline Model</a></li>
+  <li><a href="#model-tuning" id="toc-model-tuning" class="nav-link" data-scroll-target="#model-tuning">Model tuning</a></li>
+  <li><a href="#final-results" id="toc-final-results" class="nav-link" data-scroll-target="#final-results">Final results</a></li>
+  <li><a href="#conclusions" id="toc-conclusions" class="nav-link" data-scroll-target="#conclusions">Conclusions</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Decision Trees</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="introduction-to-decision-tree-and-random-forest" class="level1">
+<h1>Introduction to Decision Tree and Random Forest</h1>
+<ul>
+<li><p><strong>Definition of Decision Tree:</strong> A decision tree is like a flowchart used in computer programs, but it’s used to make decisions or predictions in things like figuring out if an email is spam or not. It starts with a question at the top, like “Is the email from a known sender?” If yes, it follows one path, and if no, it goes another way. At each step, it asks more questions based on the email’s characteristics until it reaches a final answer at the end. It’s a simple and clear way to make decisions based on important factors, and it’s helpful for tasks like sorting emails or making predictions.</p></li>
+<li><p><strong>Definition of Random Forest:</strong> A random forest is like having a team of decision-making experts. Instead of relying on just one person to make decisions, we gather many experts who each look at a different part of the problem and focus on specific factors. This way, they don’t all think the same way and don’t get too caught up in details. When we need a final decision, we ask all the experts for their input, and we go with what most of them agree on or calculate an average of their opinions. This teamwork makes our decisions more accurate and trustworthy compared to depending on just one person’s judgment.</p></li>
+<li><p><strong>How Does Decision Tree work?</strong></p>
+<ul>
+<li>A decision tree is like a game of 20 questions. It begins with a big question about the data (the root node) and then asks smaller questions about specific details (features) to narrow things down. This process keeps going until we have enough information to make a decision. The tree stops growing when we reach a point where we know the answer or when we decide it’s time to stop (based on rules like how deep the tree should go or how much data is left). At these stopping points (leaf nodes), the decision tree gives us an answer based on what it has learned from the data. It’s like solving a puzzle step by step to make predictions or classifications.</li>
+</ul></li>
+<li><p><strong>How Does Random Forest work?</strong></p>
+<ul>
+<li>A Random Forest is like having a bunch of friends help you choose the best option. Each friend (represented by a decision tree) knows a bit about your problem but not everything. They each give you their suggestion, and then you count the votes to make the final choice. It’s like asking different friends where to go on vacation, and you go with what most of them say. This way, you’re less likely to make a bad decision because you get opinions from different angles, just like using Random Forest to make predictions in a smarter way.</li>
+</ul></li>
+</ul>
+</section>
+<section id="class-distribution" class="level1">
+<h1>Class Distribution</h1>
+<ul>
+<li><p>You can find the codes that compute the distribution of class labels <a href="https://github.com/anly501/dsan-5000-project-lillianlancao/tree/main/codes">here</a></p></li>
+<li><p><strong>Result:</strong></p>
+<ul>
+<li><p>From the graph below we can see that our dataset has tree class labels. 0 means ‘low’ adaptivity level, 1 means ‘moderate’ adaptivity level, and 2 means ‘high’ adaptivity level.</p></li>
+<li><p>With Class Label 0 being significantly underrepresented, a classification algorithm might struggle to correctly identify instances of this class. This is because there’s less data for the algorithm to learn from for this class, leading to potential biases towards the more common classes. The algorithm might overfit to the majority classes (Class Label 2 and 1) since there’s more data available for these classes, and it might perform well on the training dataset but poorly on unseen data, especially for the minority class.</p></li>
+</ul></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/distribution.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">class distribution</figcaption>
+</figure>
+</div>
+</section>
+<section id="baseline-model" class="level1">
+<h1>Baseline Model</h1>
+<ul>
+<li><p><strong>Baseline Model:</strong> The baseline model implemented here is a simple decision tree model. It uses the ‘DecisionTreeClassifier’ from the scikit-learn library, which is a basic yet powerful implementation of a decision tree for classification tasks. <strong><em>Since most of the variables of our dataset are categorical, so we only do the classification task here.</em></strong></p></li>
+<li><p><strong>Results:</strong></p>
+<ul>
+<li><p>The model achieved an accuracy of approximately 78%. This indicates that, in general, the model correctly predicts the adaptivity level around 78% of the time across all classes. While this is a decent starting point, there’s room for improvement, especially considering the class imbalance in our dataset.</p></li>
+<li><p>In the class-wise analysis of the decision tree model, we can observe distinct performance metrics for each class. Class 0, which is the least represented in the dataset, shows a precision of 75% and a recall of 86%, indicating a good ability to correctly identify and capture instances of this class, with an F1-score of 80%. Class 1 demonstrates similar performance with a precision of 74% and a recall of 80%, leading to a F1-score of 77%, suggesting that the model is also quite effective in identifying this class. The most represented class, Class 2, shows a precision of 82% and a recall of 75%, with an F1-score of 78%, indicating a strong capability of the model to correctly predict this class. The model’s performance varies across different classes, performing best with the most represented class (Class 2). This variation underscores the challenge of class imbalance in the dataset and highlights areas where model performance could be enhanced.</p></li>
+</ul></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/dt-1.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">baseline model</figcaption>
+</figure>
+</div>
+<ul>
+<li><strong>Visualization of the Tree:</strong> The decision tree has been visualized with a limited depth of 4 for better interpretability. The actual tree used for classification in the previous code should be more complex and detailed. On this tree plot, each node represents a decision point and is labeled with the feature and threshold value used for splitting. The branches represent the outcome of the decision (left for ‘True’ and right for ‘False’). The leaves of the tree represent the final decision or the class labels (in this case, ‘Class 0’, ‘Class 1’, and ‘Class 2’). The color in the nodes indicates the majority class at that node, with the shade intensity representing the proportion of samples in that class.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/tree-output.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">tree visualization</figcaption>
+</figure>
+</div>
+</section>
+<section id="model-tuning" class="level1">
+<h1>Model tuning</h1>
+<p><strong>Random Forest:</strong> Random Forest model is a common and effective approach for model tuning and improvement over a baseline decision tree model. It is an ensemble learning method that operates by constructing multiple decision trees during training and outputting the class that is the mode of the classes (classification) of the individual trees. You can find all the codes <a href="https://github.com/anly501/dsan-5000-project-lillianlancao/tree/main/codes">here</a></p>
+<ul>
+<li><p>The Random Forest model has not only achieved a commendable accuracy of approximately 87.97% but also outperformed the baseline decision tree model in all metrics across the different classes. This enhanced performance is reflected in the precision, recall, and F1-scores, which are uniformly high across the board—showcasing the model’s improved ability to correctly identify and classify instances for each adaptivity level. The substantial increase in recall for Class 1 to 91%, and the high F1-scores for Classes 1 and 2 at 89%, illustrate the model’s strength in balancing precision and recall, a significant improvement over the baseline model.</p></li>
+<li><p>The consistent precision across all classes suggests that the Random Forest model is less prone to overfitting, a typical challenge with single decision trees, and indicates its superior generalization ability on unseen data. The support values reflect a degree of class imbalance; however, the Random Forest model’s ability to maintain high performance metrics despite this challenge further establishes its superiority over the simpler decision tree model. Overall, the Random Forest’s ensemble approach, which aggregates the predictions of multiple decision trees, has clearly provided a more accurate and reliable model for this dataset.</p></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/rf-1.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">random forest</figcaption>
+</figure>
+</div>
+<ul>
+<li>The feature importance plot from our Random Forest model reveals that ‘Gender’, ‘Institution Type’, and ‘Location’ are the top three factors influencing student adaptability, indicating significant roles for demographic and institutional contexts. In contrast, ‘Device_Tab’ and the age categories of ‘Age_6-10’ and ‘Age_26-30’ are the least influential, suggesting that technology type and certain age ranges are less critical in predicting adaptability outcomes. Overall, the model sheds light on the hierarchy of factors that contribute to student adaptability, with demographic factors seemingly at the forefront. This can guide educators and policymakers in tailoring their strategies to the most impactful areas, potentially enabling more efficient and effective improvements in educational adaptability.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/rf-2.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">feature importance</figcaption>
+</figure>
+</div>
+<p><strong>Hyperparameter tuning:</strong> We use ‘RandomizedSearchCV’ for the hyperparameter tuning of the Random Forest model. ‘RandomizedSearchCV’ is a hyperparameter optimization technique that helps to find the best possible combination of hyperparameters for a given model. It differs from ‘GridSearchCV’ by not exhaustively searching the entire parameter space, but rather, it selects a random subset of the parameters.</p>
+<ul>
+<li><p>The graph below shows the results of hyperparameter tuning using ‘RandomizedSearchCV’. The tuning process has identified a set of hyperparameters that resulted in the best performance based on the cross-validation strategy. The optimal hyperparameters identified for the Random Forest model through the tuning process include 200 trees, a minimum sample split of 2 for internal nodes, and a minimum of 2 samples at each leaf node, suggesting a preference for complex, deep decision trees in the ensemble. With the maximum depth set at 50, the model is allowed to grow quite deep, potentially capturing intricate patterns in the data, but also increasing the risk of overfitting. This risk is further compounded by the choice of bootstrap: False, which utilizes the entire dataset for building each tree, rather than bootstrapped samples that promote diversity among the trees. Despite these complexities, the model achieved a cross-validation score of approximately 81.53%, indicating a robust predictive performance.</p></li>
+<li><p>Overall, these hyperparameters suggest that the best model found by the ‘RandomizedSearchCV’ is a complex one, with many trees and deep structures, that does not rely on bootstrapping. It has achieved a reasonably good cross-validated performance on the dataset used for tuning.</p></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/rf-3.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">hyperparameter tuning</figcaption>
+</figure>
+</div>
+</section>
+<section id="final-results" class="level1">
+<h1>Final results</h1>
+<ul>
+<li><p>The tuned Random Forest model exhibits a commendable performance as evidenced by the classification report. The precision scores, sitting at 0.89 for class 0, 0.88 for class 1, and 0.89 for class 2, show high accuracy in the model’s predictive capability across all classes. This suggests that when the model predicts a particular class label, it is very likely to be correct. Recall scores are also impressive, particularly for class 1 and class 2, with values of 0.89 and 0.90 respectively, indicating the model’s strong ability to identify true instances of these classes.</p></li>
+<li><p>The F1-scores, which balance precision and recall, are consistently high—0.85 for class 0 and above 0.88 for classes 1 and 2. These scores reflect a well-balanced model, especially for the majority classes, signifying an efficient trade-off between precision and recall. The support values show that the model is dealing with some class imbalance, which it has managed effectively, as indicated by the robust F1-scores.</p></li>
+<li><p>Overall, the model achieves an accuracy of 88%, meaning it correctly predicts the class label for an individual observation about 88% of the time across the dataset. The macro and weighted averages for precision, recall, and F1-score stand at around 0.88, which speaks to the model’s consistent performance despite the varied representation of each class. This level of accuracy, coupled with the balanced macro and weighted scores, underscores a model that performs well in classifying across different categories and is reliable for predictive insights.</p></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/rf-4.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">final result</figcaption>
+</figure>
+</div>
+</section>
+<section id="conclusions" class="level1">
+<h1>Conclusions</h1>
+<ul>
+<li><p>Upon analyzing the performance of the baseline Decision Tree, the pre-tuned Random Forest, and the hyperparameter-tuned Random Forest models, several insights emerge. The baseline Decision Tree model, with an overall accuracy of 78%, shows commendable recall rates, especially for class 0, indicating its proficiency in identifying actual instances of this class. However, its precision lags behind the Random Forest models, suggesting it incorrectly labels more instances as positive for each class.</p></li>
+<li><p>The pre-tuned Random Forest model marks a significant leap in precision for all classes, denoting a reduction in false positives, with class 2 showing the most considerable improvement. This model also boasts a high recall for class 1, though it slightly underperforms for class 2 in recall compared to the Decision Tree. A notable increase in overall accuracy to 88% reflects its enhanced generalization capabilities.</p></li>
+<li><p>The hyperparameter-tuned Random Forest maintains this high accuracy while demonstrating improved precision and F1-scores across all classes. The precision improvements indicate a more discerning model that’s less prone to false positives. The F1-scores, which account for both precision and recall, are particularly higher for class 0 in the tuned model, signifying a more balanced performance. Although the overall accuracy is unchanged from the pre-tuned model, the increase in macro and weighted average F1-scores suggests a more uniform enhancement in the model’s predictive ability across all classes, an indication of well-executed tuning.</p></li>
+<li><p>The consistency in accuracy before and after tuning, coupled with gains in precision and F1-scores, underscores the efficacy of hyperparameter tuning in refining the Random Forest model. This fine-tuning has led to a model that not only maintains robust accuracy but also offers a more balanced classification across the different classes, a desirable trait in multi-class classification tasks on imbalanced datasets.</p></li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

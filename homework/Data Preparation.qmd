@@ -1,0 +1,12 @@
+---
+title: "Data Preparation"
+format: html
+---
+
+# Why splitting our dataset?
+
+Properly splitting the dataset is fundamental to building a robust and generalizable machine learning model. The training set allows the model to learn, the validation set helps in tuning and selecting the best model, and the testing set provides an unbiased evaluation of the final model's performance.
+
+# How to split our dataset?
+
+**Stratified Split:** Given that the target variable is "Adaptivity Level" (which is categorical), we might want to ensure that the distribution of classes in the target variable is preserved in both the training and testing sets. This is especially important if the classes are imbalanced. A stratified split would help in maintaining the class distribution.

@@ -1,0 +1,33 @@
+---
+title: "Final results(text)"
+format: html
+---
+
+# Results from the Naive Bayes Model
+
+- Using optimal feature set from the previous section and fitting a final “optimal” NB model, we get the following results.
+
+
+- ![result](./images/text_result.png)
+
+
+# Evaluation and Discussion
+
+- The overall accuracy of the model is 45%. This means that out of all the predictions made by the model, 45% of them were correct. While accuracy is a useful metric, it doesn't tell the whole story, especially in cases where class distribution is imbalanced.
+
+- The "Education" class has perfect precision but very low recall, suggesting that when the classifier predicts an article as "Education", it is always correct, but it fails to identify most of the actual "Education" articles. The "Other" class has the highest F1-score, showing a better balance between precision and recall, but the precision is still under 50%. The classes "Entertainment", "Health", and "Politics" have zero precision and recall, which might be due to very few samples being present in the test set, making it difficult for the model to learn to predict these classes correctly. The "Technology" class has low precision and recall, indicating a struggle to correctly classify articles of this type.
+
+
+# Visualizations of the results
+
+- The confusion matrix below shows the true labels vs. the predicted labels for each class. The diagonal elements represent the number of points for which the predicted label is equal to the true label, while the off-diagonal elements are those that are mislabeled by the classifier.
+
+![confusion matrix](./images/confusion_text.png)
+
+- This bar chart shows the precision, recall, and F1-score for each class. Precision is the ability of the classifier not to label a negative sample as positive, recall is the ability to find all positive samples, and the F1-score is a harmonic mean of precision and recall. This visualization makes it easier to compare these metrics across different classes.
+
+![Precision, Recall, and F1-Score](./images/vis_text.png)
+
+- This bar graph illustrates the count of actual occurrences for each category within the testing dataset. It serves a crucial role in comprehending the distribution of these categories and pinpointing any potential class imbalances. Classes that have a limited number of instances can pose challenges for the classifier in making accurate predictions, potentially impacting the overall performance of the model.
+
+![Support for each class](./images/text_support.png)

@@ -1,0 +1,79 @@
+---
+title: "Data Gathering"
+format: html
+---
+
+# ** First Part **
+
+Number of Virtual Schools in Year 2015 and Year 2020
+
+- Collect Method: Urban Institute’s Education Data API [Urban Institute](https://educationdata.urban.org/documentation/schools.html#ccd_directory)
+
+|  Datasets Name [Raw Data Access](https://github.com/anly501/dsan-5000-project-lillianlancao/tree/main/data/00-raw-data)| description|format|
+| -------- | -------- |-------- |
+| virtual_school_2015 | 709 rows, 52 columns|.csv|
+| virtual_school_2020 | 818 rows, 52 columns|.csv|
+
+**Raw Data Overview**
+
+- These two datasets are basically same in terms of structure and variables, so I just use one of them as an example
+
+![virtual_school_2015](./images/virtual_school_2015_p1.png)
+
+![virtual_school_2015](./images/virtual_school_2015_p2.png)
+
+
+
+# ** Second Part **
+
+Distance Education in Title IV Institutions
+
+- Collect Method: Download from a website called [STEM Education Data](https://www.nsf.gov/nsb/sei/edTool/data/college-03.html)
+
+|  Datasets Name [Raw Data Access](https://github.com/anly501/dsan-5000-project-lillianlancao/tree/main/data/00-raw-data)| description|format|
+| -------- | -------- |-------- |
+| distance_education| 31 rows, 5 columns|.xls
+
+
+**Raw Data Overview**
+
+![distance_education](./images/distance_education.png)
+
+
+# ** Third Part **
+
+Distance education in Title IV institutions
+
+- Collect Method: Download from an organization called [OECD](https://oecd.ai/en/data?selectedArea=ai-research&selectedVisualization=ai-publications-time-series-by-country)
+
+|  Datasets Name [Raw Data Access](https://github.com/anly501/dsan-5000-project-lillianlancao/tree/main/data/00-raw-data)| description|format|
+| -------- | -------- |-------- |
+| AI_pub| 264 rows, 3 columns|.csv
+
+
+**Raw Data Overview**
+
+![AI_pub](./images/AI_pub.png)
+
+
+
+# ** Fourth Part **
+
+
+Education Trend Text Data
+
+- Collect Method: [NewsAPI](https://newsapi.org/)
+
+|  Datasets Name [Raw Data Access](https://github.com/anly501/dsan-5000-project-lillianlancao/tree/main/data/00-raw-data)| description|format|
+| -------- | -------- |-------- |
+| AI_pub| 100 documents|.json
+
+
+**Raw Data Overview**
+
+![education_trend](./images/text_data.png){width=600px height=300px}
+
+
+
+
+

@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Portfolio - Clustering</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Clustering.html">Clustering</a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Portfolio</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Introduction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./About Me.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About Me</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Code.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Code</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Data Gathering.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Gathering</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Data Cleaning.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Cleaning</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Data Exploration.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Exploration</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./Naive Bayes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Naive Bayes</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Introduction to Naive Bayes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to Naive Bayes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Data Preparation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Preparation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Feature selection record.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Feature selection for record data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Feature selection text.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Feature selection for text data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Final results record.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Final results(record)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Final results text.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Final results(text)</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Clustering.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Clustering</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Dimensionality Reduction.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Dimensionality Reduction</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Decision Trees.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Decision Trees</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ARM.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ARM</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Conclusions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Conclusions</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#theory" id="toc-theory" class="nav-link" data-scroll-target="#theory">Theory</a></li>
+  <li><a href="#methods" id="toc-methods" class="nav-link" data-scroll-target="#methods">Methods</a>
+  <ul class="collapse">
+  <li><a href="#data-selection" id="toc-data-selection" class="nav-link" data-scroll-target="#data-selection">Data Selection</a></li>
+  <li><a href="#hyper-parameter-tuning" id="toc-hyper-parameter-tuning" class="nav-link" data-scroll-target="#hyper-parameter-tuning">Hyper-parameter tuning</a>
+  <ul class="collapse">
+  <li><a href="#k-means" id="toc-k-means" class="nav-link" data-scroll-target="#k-means">K-Means:</a></li>
+  <li><a href="#dbscan" id="toc-dbscan" class="nav-link" data-scroll-target="#dbscan">DBSCAN:</a></li>
+  <li><a href="#hierarchical-clustering" id="toc-hierarchical-clustering" class="nav-link" data-scroll-target="#hierarchical-clustering">Hierarchical Clustering:</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">Results</a>
+  <ul class="collapse">
+  <li><a href="#note" id="toc-note" class="nav-link" data-scroll-target="#note">Note</a></li>
+  </ul></li>
+  <li><a href="#conclusions" id="toc-conclusions" class="nav-link" data-scroll-target="#conclusions">Conclusions</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Clustering</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<p>The feature data X in this dataset encompasses a variety of attributes that describe students in educational settings. This includes demographics (such as gender and age), educational details (like institution type and education level), and technological aspects (including internet and device type), along with factors like financial status and location. Predominantly categorical, these features vary from binary (e.g., gender) to multi-category (e.g., financial condition). The main aim of the clustering analysis is to categorize students into distinct groups based on these attributes to identify common patterns and understand how various factors, from socio-economic background to technology access, interplay and impact students’ adaptability and educational experiences.</p>
+</section>
+<section id="theory" class="level1">
+<h1>Theory</h1>
+<ul>
+<li><p><strong>K-Means Clustering:</strong></p>
+<ul>
+<li><p><strong>Definition:</strong> K-means is an unsupervised learning approach where the algorithm processes data without specific guidance on how to handle it. Its objective is to autonomously discover patterns and connections within the data. This technique is commonly employed to categorize data into a set number of clusters by grouping data points with similar characteristics.</p></li>
+<li><p><strong>Example illustration:</strong> K-Means clustering organizes data into groups (clusters) based on similarities. First, we select the number of clusters and assign random ‘captains’ (centroids) to each. Individuals (data points) join the nearest cluster. Captains then move to their cluster’s center, potentially causing members to switch to closer clusters. This process repeats until no switches occur. The goal is cohesive, distinct clusters. The optimal cluster number is determined using methods like the ‘elbow’ method, ensuring groups are focused yet manageable.</p></li>
+</ul></li>
+<li><p><strong>DBSCAN:</strong></p>
+<ul>
+<li><p><strong>Definition:</strong> DBSCAN is a clustering algorithm that groups points based on density, identifying dense regions as clusters and isolating sparse points as outliers. Unlike methods like K-means, it doesn’t require predefining the number of clusters. It relies on the idea that a point belongs to a cluster if it’s near many other points in that cluster. DBSCAN can detect clusters of varied shapes and is effective for noisy data and clusters with differing sizes and densities.</p></li>
+<li><p><strong>Example illustration:</strong> DBSCAN is akin to observing bird flocking behavior. Without predefining the number of flocks (clusters), it groups birds (data points) based on proximity. The algorithm starts with one bird, forming a flock if enough birds are within a set distance. The flock expands by including nearby birds. Those not close enough to any group remain alone, similar to outliers in data. DBSCAN is adept at handling flocks of varying sizes and shapes and effectively ignores isolated birds (outliers). This approach is ideal when the exact number of flocks in the data is uncertain.</p></li>
+</ul></li>
+<li><p><strong>Hierarchical Clustering:</strong></p>
+<ul>
+<li><p><strong>Definition:</strong> Hierarchical clustering is a cluster analysis method that creates a cluster hierarchy. Data points are grouped by similarity, visualized in a dendrogram, a tree-like diagram. It has two forms: agglomerative (bottom-up, starting with individual points and merging clusters upward) and divisive (top-down, starting with one cluster and dividing downward). This technique helps reveal data structure and cluster relationships but can be demanding on computation for big datasets.</p></li>
+<li><p><strong>Example illustration:</strong> Hierarchical clustering is like constructing a building with blocks, where each block represents a data point. Initially, each block is a separate entity. We then group blocks based on compatibility, either by merging individual blocks into larger structures (Agglomerative method) or by splitting a large structure into smaller, cohesive units (Divisive method). The process results in a blueprint or dendrogram, showing the grouping stages. This dendrogram helps us understand the similarity levels at which blocks join, allowing us to choose the granularity of our grouping. Unlike methods like K-Means, hierarchical clustering doesn’t require setting the number of clusters in advance and visually maps how data points group together.</p></li>
+</ul></li>
+<li><p><strong>Model Selection Methods:</strong></p>
+<ul>
+<li><p><strong>The elbow method</strong> is like achieving equilibrium on a seesaw. It involves plotting the number of clusters against their effectiveness in representing the data (often measured by variance). The goal is to find a point where adding additional clusters doesn’t markedly enhance the fit. This is analogous to the point of balance on a seesaw, where adding more weight (or clusters) won’t substantially alter the equilibrium (or data fit).</p></li>
+<li><p><strong>The silhouette method</strong> is similar to assessing the seating plan at a dinner party. It evaluates how well each guest (data point) fits with their table (cluster) relative to other tables. A high silhouette score indicates a guest is aptly seated, closely matching others at the same table and distinct from those at different tables. The objective is to arrange guests so they’re comfortably grouped at their tables, with a clear separation between tables. This method assists in determining the optimal number of tables (clusters) to ensure guests are neither too clustered nor too spread out.</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="methods" class="level1">
+<h1>Methods</h1>
+<section id="data-selection" class="level2">
+<h2 class="anchored" data-anchor-id="data-selection">Data Selection</h2>
+<ul>
+<li>The ‘Adaptivity Level’ is the label, so it would be excluded from the clustering analysis.</li>
+</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python hide code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Removing the label column for clustering</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>df_clustering <span class="op">=</span> df.drop([<span class="st">'Adaptivity Level'</span>], axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Standardizing the data </span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>scaler <span class="op">=</span> StandardScaler()</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>df_scaled <span class="op">=</span> scaler.fit_transform(df_clustering)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="hyper-parameter-tuning" class="level2">
+<h2 class="anchored" data-anchor-id="hyper-parameter-tuning">Hyper-parameter tuning</h2>
+<section id="k-means" class="level3">
+<h3 class="anchored" data-anchor-id="k-means">K-Means:</h3>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python hide code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Elbow Method</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>wcss <span class="op">=</span> []</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">11</span>):</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    kmeans <span class="op">=</span> KMeans(n_clusters<span class="op">=</span>i, n_init<span class="op">=</span> <span class="dv">10</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    kmeans.fit(df_clustering)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    wcss.append(kmeans.inertia_)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting the Elbow Method</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>plt.plot(<span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">11</span>), wcss, marker<span class="op">=</span><span class="st">'o'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Elbow Method for Optimal k'</span>)</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Number of clusters'</span>)</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'WCSS'</span>)</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>plt.xticks(<span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">11</span>))</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/kmean-1.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Elbow</figcaption>
+</figure>
+</div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python hide code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>silhouette_scores <span class="op">=</span> []</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>, <span class="dv">11</span>):</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    kmeans <span class="op">=</span> KMeans(n_clusters<span class="op">=</span>i, n_init<span class="op">=</span> <span class="dv">10</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    kmeans.fit(df_clustering)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    score <span class="op">=</span> silhouette_score(df_clustering, kmeans.labels_)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    silhouette_scores.append(score)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting the Silhouette Scores</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">11</span>, <span class="dv">7</span>))</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>plt.plot(<span class="bu">range</span>(<span class="dv">2</span>, <span class="dv">11</span>), silhouette_scores, marker<span class="op">=</span><span class="st">'X'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>)</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Silhouette Scores for Different Numbers of Clusters'</span>)</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Number of clusters'</span>)</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Silhouette Score'</span>)</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>plt.xticks(<span class="bu">range</span>(<span class="dv">2</span>, <span class="dv">11</span>))</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/kmean-2.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Silhouette-score</figcaption>
+</figure>
+</div>
+<p>The Elbow Method suggested optimal clusters at 3 or 4 due to a smaller decrease in WCSS beyond this point. The highest silhouette scores indicated better clustering with 4 to 6 clusters. As silhouette scores directly measure how well data points fit within their cluster compared to others, they’re often more reliable. <strong>Therefore, a cluster size of 4 might be optimal for our dataset.</strong></p>
+</section>
+<section id="dbscan" class="level3">
+<h3 class="anchored" data-anchor-id="dbscan">DBSCAN:</h3>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python hide code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Exploring different distance metrics for DBSCAN</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>distance_metrics <span class="op">=</span> [<span class="st">'euclidean'</span>, <span class="st">'manhattan'</span>, <span class="st">'chebyshev'</span>]</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>eps_values <span class="op">=</span> np.arange(<span class="fl">0.1</span>, <span class="fl">2.0</span>, <span class="fl">0.1</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>min_samples_values <span class="op">=</span> <span class="bu">range</span>(<span class="dv">2</span>, <span class="dv">20</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> []</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> metric <span class="kw">in</span> distance_metrics:</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> eps <span class="kw">in</span> eps_values:</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> min_samples <span class="kw">in</span> min_samples_values:</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>            dbscan <span class="op">=</span> DBSCAN(eps<span class="op">=</span>eps, min_samples<span class="op">=</span>min_samples, metric<span class="op">=</span>metric)</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>            clusters <span class="op">=</span> dbscan.fit_predict(df_scaled)</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Only compute silhouette score if more than 1 cluster and less than n-1 noise points</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> <span class="bu">len</span>(np.unique(clusters)) <span class="op">&gt;</span> <span class="dv">1</span> <span class="kw">and</span> <span class="bu">len</span>(np.unique(clusters)) <span class="op">&lt;</span> <span class="bu">len</span>(df_scaled) <span class="op">-</span> <span class="dv">1</span>:</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>                silhouette_avg <span class="op">=</span> silhouette_score(df_scaled, clusters)</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>                results.append((metric, eps, min_samples, silhouette_avg))</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>results_sorted <span class="op">=</span> <span class="bu">sorted</span>(results, key<span class="op">=</span><span class="kw">lambda</span> x: x[<span class="dv">3</span>], reverse<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Displaying the top 5 results</span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(results_sorted[:<span class="dv">5</span>])</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a><span class="co"># 3D Visualization </span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract the eps, min_samples, and silhouette score for plotting</span></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>eps_list <span class="op">=</span> [result[<span class="dv">1</span>] <span class="cf">for</span> result <span class="kw">in</span> results_sorted]</span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>min_samples_list <span class="op">=</span> [result[<span class="dv">2</span>] <span class="cf">for</span> result <span class="kw">in</span> results_sorted]</span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>silhouette_scores <span class="op">=</span> [result[<span class="dv">3</span>] <span class="cf">for</span> result <span class="kw">in</span> results_sorted]</span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> plt.figure(figsize<span class="op">=</span>(<span class="dv">20</span>, <span class="dv">10</span>))</span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> fig.add_subplot(<span class="dv">111</span>, projection<span class="op">=</span><span class="st">'3d'</span>)</span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>scat <span class="op">=</span> ax.scatter(eps_list, min_samples_list, silhouette_scores, c<span class="op">=</span>silhouette_scores, cmap<span class="op">=</span><span class="st">'viridis'</span>)</span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>cbar <span class="op">=</span> fig.colorbar(scat, shrink<span class="op">=</span><span class="fl">0.5</span>, aspect<span class="op">=</span><span class="dv">5</span>)</span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>cbar.set_label(<span class="st">'Silhouette Score'</span>)</span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'Epsilon (eps)'</span>)</span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'Minimum Samples (min_samples)'</span>)</span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>ax.set_zlabel(<span class="st">'Silhouette Score'</span>)</span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">'3D Plot of DBSCAN Hyperparameters Tuning'</span>)</span>
+<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/dbscan-1.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">DBSCAN</figcaption>
+</figure>
+</div>
+<p>From the plot, we can see that the optimal silhouette scores are generally associated with smaller values of the epsilon parameter and specific values for the minimum number of samples. When epsilon is set too high, it results in a silhouette score decrease, suggesting that the clusters are not well-defined and may be overlapping due to an overly generous neighborhood size. Conversely, setting the minimum number of samples too low appears to detrimentally affect the silhouette score, possibly because it allows more noise to be classified as part of clusters. <br></p>
+<p>The best settings for eps and min_samples are those that give the highest silhouette score, indicating clear, tight clusters. The brightest yellow dots on the plot show where these scores are highest. Using these points, we can pinpoint the most effective eps and min_samples values. The Euclidean metric performs well here, likely because the data forms dense clusters with space around them, which Euclidean distance measures effectively.</p>
+</section>
+<section id="hierarchical-clustering" class="level3">
+<h3 class="anchored" data-anchor-id="hierarchical-clustering">Hierarchical Clustering:</h3>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python hide code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Hierarchical Clustering</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Parameters for tuning</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>n_clusters_options <span class="op">=</span> <span class="bu">range</span>(<span class="dv">2</span>, <span class="dv">11</span>)  <span class="co"># Exploring number of clusters from 2 to 10</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>linkage_options <span class="op">=</span> [<span class="st">'ward'</span>, <span class="st">'complete'</span>, <span class="st">'average'</span>]  <span class="co"># Different linkage criteria</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>silhouette_scores <span class="op">=</span> np.zeros((<span class="bu">len</span>(n_clusters_options), <span class="bu">len</span>(linkage_options)))</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, n_clusters <span class="kw">in</span> <span class="bu">enumerate</span>(n_clusters_options):</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> j, linkage <span class="kw">in</span> <span class="bu">enumerate</span>(linkage_options):</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>        clustering <span class="op">=</span> AgglomerativeClustering(n_clusters<span class="op">=</span>n_clusters, linkage<span class="op">=</span>linkage)</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>        cluster_labels <span class="op">=</span> clustering.fit_predict(df_scaled)</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>        score <span class="op">=</span> silhouette_score(df_scaled, cluster_labels)</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>        silhouette_scores[i, j] <span class="op">=</span> score</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">8</span>))</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, linkage <span class="kw">in</span> <span class="bu">enumerate</span>(linkage_options):</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>    plt.plot(n_clusters_options, silhouette_scores[:, i], label<span class="op">=</span><span class="ss">f'Linkage: </span><span class="sc">{</span>linkage<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Number of Clusters'</span>)</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Silhouette Score'</span>)</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Silhouette Scores for Different Linkage Methods'</span>)</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>)</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><p>In the context of Hierarchical Clustering, we try different linkage criteria along with various numbers of clusters to see how silhouette_scores vary for different combinations.</p></li>
+<li><p>From the plot below, we can see that each linkage method suggests a different ideal count of clusters. Ward’s method suggests fewer clusters work best, while complete linkage points to three clusters as the optimal solution. Average linkage, on the other hand, shows that a number of clusters between 2 to 6 may be suitable. Based on our earlier analysis and understanding of our dataset, Ward’s method seems to be the more favorable choice.</p></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/hie-1.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Hierarchical Clustering</figcaption>
+</figure>
+</div>
+</section>
+</section>
+</section>
+<section id="results" class="level1">
+<h1>Results</h1>
+<section id="note" class="level2">
+<h2 class="anchored" data-anchor-id="note">Note</h2>
+<ul>
+<li><p>You can find all the codes for Hyper-parameter tuning and final clustering results in the “clustering” folder <a href="https://github.com/anly501/dsan-5000-project-lillianlancao/tree/main/codes">here</a></p></li>
+<li><p>For k-means method, the optimal k value is 4. And below is the result with the optimal k values. We use PCA to reduce the data to be two dimensions.</p></li>
+<li><p>The blue and green groups have an area where they mix, showing they have some things in common or the line between them isn’t very clear. The purple and yellow groups stand out more from the others, with less mixing with the blue and green groups. There are a few spots that are away from the main part of their groups. For example, some spots in the purple group are far from the middle of the group, and these might be seen as unusual. But, using PCA (a method to simplify data) can sometimes make it harder to understand these groups based on the original details.</p></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/kmean-3.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">kmeans final result</figcaption>
+</figure>
+</div>
+<ul>
+<li><p>The DBSCAN clustering outcome following PCA reduction shows clear clusters; however, these groupings don’t align well with the expected patterns of our dataset.</p></li>
+<li><p>Since PCA transformation is linear and focuses on preserving global structures with high variance, which might not always align with the local neighborhood relationships that DBSCAN exploits. Therefore, we should other dimensionality reduction method like t-SNE.</p></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/dbscan-2.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">DBSCAN final result-PCA</figcaption>
+</figure>
+</div>
+<ul>
+<li>The t-SNE method has made the clusters in the plot clearer. We can see distinct groups spread out on the plot. Some groups are close together, while others are looser. DBSCAN’s detection of groups with varying tightness shows it can handle complicated data well. Red stars mark the “noise” — these points don’t belong to any group. Since these noise points are all over the place, it means there are spots in the data that are not dense enough for DBSCAN to form groups with the settings used.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/dbscan-3.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">DBSCAN final result- t-SNE</figcaption>
+</figure>
+</div>
+<ul>
+<li><p>We will try both PCA and t-SNE for the Hierarchical Clustering.</p></li>
+<li><p>The plot created using t-SNE shows data points organized into two distinct groups, differentiated by the colors purple and yellow. This demonstrates that Agglomerative Clustering has successfully divided the data into two separate categories. The application of t-SNE for reducing the data’s dimensions before clustering has proven beneficial, as t-SNE is designed to maintain the local relationships of data points, which seems to have revealed the inherent groupings within the data effectively.</p></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/hie-2.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Hierarchical Clustering(t-SNE)</figcaption>
+</figure>
+</div>
+<ul>
+<li>Implemented PCA reduction, we can visualize our final results for Hierarchical Clustering from the plot below. We can see that there are two clear clusters indicated by two colors, blue and red. The blue cluster appears more dispersed than the red cluster, which is more densely packed. Overall, it appears that PCA has been a more effective step for dimensionality reduction prior to clustering, enabling Agglomerative Clustering to identify two principal groups within the dataset.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/hie-3.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Hierarchical Clustering(PCA)</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="conclusions" class="level1">
+<h1>Conclusions</h1>
+<ul>
+<li><p>All the three clustering methods above provide us with some insights of our data. Among them, I think K-means and Hierarchical Clustering performs better than DBSCAN. It indicates that our dataset has roughly spherical or globular clusters and clusters in our dataset are of similar density. Good performance by K-means or Hierarchical Clustering could also tell us that our data has few outliers or noise points, and these points do not significantly disrupt the overall clustering structure. The results also hints us that the clusters within your dataset may be relatively uniform in terms of density and size.</p></li>
+<li><p>Our dataset includes a predefined target variable, “adaptability level,” categorizing students’ adaptability to online learning into “High,” “Medium,” or “Low” categories. Ideally, one might expect to find three clusters corresponding to these levels. However, after excluding the target variable for unsupervised clustering, the analyses consistently suggest the presence of two main clusters. This outcome aligns with insights gained during data exploration, where we observed a minimal number of students with “High adaptability” compared to a similar count of students with “Low” and “Moderate” adaptability. Hence, a clustering solution that yields two groups is plausible and reflects the distribution found in our dataset.</p></li>
+<li><p>The dataset, rich with various feature variables, is designed to classify students into three levels of adaptability to online learning. However, the clustering analysis suggests that the available features may not sufficiently capture the nuances of student adaptability. Moreover, the dataset is composed entirely of categorical variables, many of which are binary. For instance, “financial condition,” a variable considered significant in prior research, is limited to three categories: “Mid,” “Poor,” “Rich.” The inclusion of more detailed information, such as precise family income or asset data, could potentially provide deeper insights into the factors influencing student adaptability to online learning.</p></li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

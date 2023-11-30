@@ -1,0 +1,58 @@
+project:
+  type: website
+
+website:
+  title: "Portfolio"
+  sidebar:
+    contents:
+      - href: Introduction.qmd
+        text: Introduction
+      - href: About Me.qmd
+        text: About Me
+      - href: Code.qmd
+        text: Code
+      - href: Data.qmd
+        text: Data
+      - href: Data Gathering.qmd
+        text: Data Gathering
+      - href: Data Cleaning.qmd
+        text: Data Cleaning
+      - href: Data Exploration.qmd
+        text: Data Exploration
+
+      - tab: Naive Bayes
+        href: Naive Bayes.qmd
+        contents: 
+         - href: Introduction to Naive Bayes.qmd
+           text: Introduction to Naive Bayes
+         - href: Data Preparation.qmd
+           text: Data Preparation
+         - href: Feature selection record.qmd
+           text: Feature selection for record data
+         - href: Feature selection text.qmd
+           text: Feature selection for text data
+         - href: Final results record.qmd
+           text: Final results(record)
+         - href: Final results text.qmd
+           text: Final results(text)
+
+
+      - href: Clustering.qmd
+        text: Clustering
+      - href: Dimensionality Reduction.qmd
+        text: Dimensionality Reduction
+      - href: Decision Trees.qmd
+        text: Decision Trees
+      - href: ARM.qmd
+        text: ARM
+      - href: Conclusions.qmd
+        text: Conclusions
+    
+
+format:
+  html:
+    theme: cosmo
+    toc: true
+
+
+
