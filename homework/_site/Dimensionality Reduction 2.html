@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Portfolio - Naive Bayes</title>
+<title>Portfolio - Dimensionality Reduction</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -72,7 +72,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Naive Bayes.html">Naive Bayes</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Dimensionality Reduction.html">Dimensionality Reduction</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -105,7 +105,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">
+  <a href="./About Me.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">About Me</span></a>
   </div>
 </li>
@@ -141,7 +141,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./Naive Bayes.html" class="sidebar-item-text sidebar-link active">
+            <a href="./Naive Bayes.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Naive Bayes</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -194,7 +194,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Dimensionality Reduction.html" class="sidebar-item-text sidebar-link">
+  <a href="./Dimensionality Reduction.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Dimensionality Reduction</span></a>
   </div>
 </li>
@@ -216,14 +216,27 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#project-proposal" id="toc-project-proposal" class="nav-link active" data-scroll-target="#project-proposal">Project Proposal</a></li>
+  <li><a href="#code-implementation" id="toc-code-implementation" class="nav-link" data-scroll-target="#code-implementation">Code Implementation</a></li>
+  <li><a href="#project-report" id="toc-project-report" class="nav-link" data-scroll-target="#project-report">Project Report</a>
+  <ul class="collapse">
+  <li><a href="#dimensionality-reduction-with-pca" id="toc-dimensionality-reduction-with-pca" class="nav-link" data-scroll-target="#dimensionality-reduction-with-pca"><strong>Dimensionality Reduction with PCA:</strong></a></li>
+  <li><a href="#dimensionality-reduction-with-t-sne" id="toc-dimensionality-reduction-with-t-sne" class="nav-link" data-scroll-target="#dimensionality-reduction-with-t-sne"><strong>Dimensionality Reduction with t-SNE:</strong></a></li>
+  <li><a href="#evaluation-and-comparison" id="toc-evaluation-and-comparison" class="nav-link" data-scroll-target="#evaluation-and-comparison"><strong>Evaluation and Comparison:</strong></a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Naive Bayes</h1>
+<h1 class="title">Dimensionality Reduction</h1>
 </div>
 
 
@@ -238,8 +251,88 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
+<section id="project-proposal" class="level1">
+<h1>Project Proposal</h1>
+<ul>
+<li><p><strong>Objectives:</strong> The objective of this project is to explore and demonstrate the effectiveness of Principal Component Analysis (PCA) and t-Distributed Stochastic Neighbor Embedding (t-SNE) in reducing the dimensionality of complex, multimodal data while preserving essential information and enhancing data visualization. This study aims to provide a deeper understanding of these techniques in handling and visualizing high-dimensional datasets, offering insights into their practical applications and effectiveness.</p></li>
+<li><p><strong>Dataset Selection:</strong> The dataset chosen for this project is “Students’ Adaptability to Online Learning Environments.” It encompasses a variety of attributes, such as gender, institution type, IT student status, location, load-shedding, internet type, LMS usage, age groups, education level, financial condition, network type, class duration, device type, and adaptivity level. You can find the <a href="https://github.com/anly501/dsan-5000-project-lillianlancao/tree/main/data/00-raw-data">raw data</a> and also the <a href="https://github.com/anly501/dsan-5000-project-lillianlancao/tree/main/data/01-modified-data">modified data</a> In the previous section, we applied One-Hot Encoding to transform our dataset, which was entirely categorical, into a numeric format. Therefore, we will use the modified dataset for this project.</p></li>
+<li><p><strong>Tools and Libraries:</strong> The project will employ Python due to its extensive support for data analysis and visualization. Key libraries include: Pandas;NumPy;Scikit-learn;Matplotlib;Seaborn.</p></li>
+</ul>
+</section>
+<section id="code-implementation" class="level1">
+<h1>Code Implementation</h1>
+<ul>
+<li>You can find all the python codes <a href="https://github.com/anly501/dsan-5000-project-lillianlancao/tree/main/codes">here</a></li>
+</ul>
+</section>
+<section id="project-report" class="level1">
+<h1>Project Report</h1>
+<section id="dimensionality-reduction-with-pca" class="level2">
+<h2 class="anchored" data-anchor-id="dimensionality-reduction-with-pca"><strong>Dimensionality Reduction with PCA:</strong></h2>
+<ul>
+<li><p><strong>Preprocess:</strong> PCA is sensitive to the scale of the features and features with larger scales can disproportionately influence the result, leading to misleading principal components. Therefore, we use StandardScaler from scikit-learn to standardize our data first. Standardizing ensures that each feature contributes equally to the result, making the PCA more reliable and interpretable.</p></li>
+<li><p><strong>Optimal number of principal components:</strong> We will use a scree plot and cumulative explained variance ratio to identify the optimal number of principal components that capture most of the variance in the data. A scree plot is a simple line segment plot that is commonly used in Principal Component Analysis (PCA) to help determine the number of principal components to retain.</p></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/pca-1.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">scree plot and cumulative explained variance ratio plot</figcaption>
+</figure>
+</div>
+<p>To determine the optimal number of principal components, we typically search for a leveling-off point on the cumulative explained variance plot. This point suggests that additional components contribute little to explaining the dataset’s variance. Aiming to maintain a significant proportion of the variance, such as 95%, we can identify the required number of principal components. In your dataset, this approach indicates that 17 principal components are needed to retain at least 95% of the total variance. <strong><em>By reducing the dataset to these 17 dimensions, we effectively preserve most of the original data’s information, striking a balance between lowering dimensionality and maintaining key data characteristics.</em></strong></p>
+<ul>
+<li><strong>Visualize the reduced-dimensional space:</strong></li>
+</ul>
+<p>The visualization below represents our data projected onto the first two principal components (PC1 and PC2) after reducing the dataset to 17 dimensions using PCA.</p>
+<p>The PCA plot displays data distribution along the first two principal components. The visible, albeit not sharp, groupings suggest a somewhat overlapping distribution of adaptivity levels in these dimensions. This overlap implies that PC1 and PC2 alone might not distinctly separate adaptivity levels, hinting at the importance of the other components for capturing finer details. Regarding the color scale, while some color concentration in certain areas could signal distinct adaptivity level characteristics, the mixed color distribution in this plot points to a complex interaction between features and adaptivity levels, potentially necessitating more dimensions for clearer differentiation.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/pca-2.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">plot of first two principal components</figcaption>
+</figure>
+</div>
+<p>Biplot is used in principal component analysis (PCA) to visualize both the principal component scores and the principal component loadings. <br></p>
+<p>In the biplot, each vector corresponds to a dataset feature, with longer vectors indicating a stronger influence on the principal components’ variability. Vectors in similar directions suggest positive correlations between features, while opposite directions imply negative correlations.</p>
+<p>For instance, the vectors for ‘Institution Type’ and ‘Internet Type’ are nearly orthogonal, suggesting these features independently contribute to the dataset’s variance. Conversely, ‘Load-shedding’ and ‘Class Duration’ vectors point in similar directions, indicating a positive correlation, possibly implying that load-shedding impacts class duration.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/pca-3.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">bipplot</figcaption>
+</figure>
+</div>
+</section>
+<section id="dimensionality-reduction-with-t-sne" class="level2">
+<h2 class="anchored" data-anchor-id="dimensionality-reduction-with-t-sne"><strong>Dimensionality Reduction with t-SNE:</strong></h2>
+<p><strong>Preprocess:</strong> Just like what we do for PCA, we should standardize our data first.</p>
+<p><strong>Explore different perplexity values:</strong></p>
+<p>With a perplexity of 5, the data points are scattered too uniformly, suggesting it’s too low to discern any meaningful clusters, as it might capture more noise than structure. A perplexity of 20 shows emerging clusters with reduced overlap, yet the data structure isn’t entirely clear. At 30, clusters become more distinct, indicating a better capture of data structure with increased perplexity. Perplexity at 40 reveals even clearer, well-separated clusters, hinting it might be near optimal for the dataset. However, at 50, while clusters remain distinct, they are less defined compared to 40, suggesting that this value may be slightly too high as it begins to merge different groups. <strong><em>Therefore, a perplexity value between 30 and 40 might be appropriate for our dataset.</em></strong></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/t-SNE-1.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">different perplexity values</figcaption>
+</figure>
+</div>
+<p><strong>Visualization of the t-SNE output</strong></p>
+<p>The t-SNE visualization indicates distinct groupings corresponding to various adaptivity levels—high, medium, and low. The algorithm seems to be successful in delineating these groups, particularly distinguishing the high adaptivity level with notable clarity. Yet, the transition between low and medium adaptivity levels is less defined, with some overlap present, suggesting a more nuanced or complex relationship between these categories. Outlying data points stand apart from the primary clusters, potentially representing atypical cases or unique data profiles within the broader dataset.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/t-SNE-2.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">different perplexity values</figcaption>
+</figure>
+</div>
+</section>
+<section id="evaluation-and-comparison" class="level2">
+<h2 class="anchored" data-anchor-id="evaluation-and-comparison"><strong>Evaluation and Comparison:</strong></h2>
+<ul>
+<li><p><strong>Preserving data structure and information:</strong> PCA is a linear method that focuses on keeping significant data features by maximizing variance and projecting data onto high-variance axes, but it might miss complex, nonlinear data relationships. In contrast, t-SNE, a nonlinear technique, excels in highlighting local structures and clusters by unfolding complex patterns, though it may not maintain the overall data structure as effectively as PCA.</p></li>
+<li><p><strong>Visualization Capabilities:</strong> PCA is adept at capturing the most significant variance in high-dimensional data, projecting it to lower dimensions to visualize overarching patterns and global relationships efficiently. Conversely, t-SNE excels at delineating local clusters and complex structures, presenting a detailed picture of data relationships on a smaller scale that PCA may overlook due to its linear approach. While PCA gives a broad overview with computational ease, t-SNE digs deeper into the data’s fine details, demanding more computational resources.</p></li>
+<li><p><strong>Discussion of the trade-offs:</strong> PCA is optimal for quick, high-level data structure analysis and when feature contribution is crucial, as it efficiently handles large datasets and retains global relationships. In contrast, t-SNE is superior for uncovering detailed local groupings and nonlinear patterns in smaller datasets, but it’s computationally heavier and less interpretable. Essentially, PCA is best for dimensionality reduction and overview insights, while t-SNE excels in cluster visualization and data exploration.</p></li>
+</ul>
+<p>Note: Documentation is facilitated by ChatGpt</p>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

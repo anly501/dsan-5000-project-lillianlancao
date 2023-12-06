@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Portfolio - Data</title>
+<title>Portfolio - Final results(record)</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -72,7 +72,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Data.html">Data</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Naive Bayes.html">Naive Bayes</a></li><li class="breadcrumb-item"><a href="./Final results record.html">Final results(record)</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -117,7 +117,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Data.html" class="sidebar-item-text sidebar-link active">
+  <a href="./Data.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Data</span></a>
   </div>
 </li>
@@ -174,7 +174,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Final results record.html" class="sidebar-item-text sidebar-link">
+  <a href="./Final results record.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Final results(record)</span></a>
   </div>
 </li>
@@ -206,12 +206,6 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./ARM.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">ARM</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./Conclusions.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Conclusions</span></a>
   </div>
@@ -222,14 +216,23 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#results-from-the-navie-bayes-model" id="toc-results-from-the-navie-bayes-model" class="nav-link active" data-scroll-target="#results-from-the-navie-bayes-model">Results from the Navie Bayes Model</a></li>
+  <li><a href="#evaluation" id="toc-evaluation" class="nav-link" data-scroll-target="#evaluation">Evaluation</a></li>
+  <li><a href="#discussion" id="toc-discussion" class="nav-link" data-scroll-target="#discussion">Discussion</a></li>
+  <li><a href="#visualizations-of-the-results" id="toc-visualizations-of-the-results" class="nav-link" data-scroll-target="#visualizations-of-the-results">Visualizations of the results</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Data</h1>
+<h1 class="title">Final results(record)</h1>
 </div>
 
 
@@ -244,8 +247,73 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
+<section id="results-from-the-navie-bayes-model" class="level1">
+<h1>Results from the Navie Bayes Model</h1>
+<ul>
+<li>Using optimal feature set from the previous section and fitting a final “optimal” NB model, we get the following results.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/result-1.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">result</figcaption>
+</figure>
+</div>
+</section>
+<section id="evaluation" class="level1">
+<h1>Evaluation</h1>
+<ul>
+<li><p><strong>Accuracy:</strong> the accuracy of the model is 63.81%, which means that the classifier correctly predicted the adaptivity level for approximately 64 out of every 100 students.</p></li>
+<li><p><strong>Precision:</strong> the precision for the classes 0, 1, and 2 are 0.49, 0.66, and 0.65, respectively. This means that when the model predicts a student’s adaptivity level as class 0, it is correct about 49% of the time. For class 1, it is correct 66% of the time, and for class 2, 65% of the time.</p></li>
+<li><p><strong>Recall:</strong> the recall for the classes 0, 1, and 2 are 0.46, 0.71, and 0.61, respectively. This implies that the model identifies 46% of all actual class 0 adaptivity levels correctly, 71% of class 1, and 61% of class 2.</p></li>
+<li><p><strong>F1-scores:</strong> the F1-scores for the classes 0, 1, and 2 are 0.47, 0.69, and 0.63, respectively. The F1-score balances the trade-off between precision and recall. For class 1, the balance is better (F1-score 0.69) compared to class 0 (F1-score 0.47) and class 2 (F1-score 0.63), indicating a more reliable performance for class 1 predictions.</p></li>
+<li><p><strong>Support:</strong> There were 39 instances of class 0, 154 of class 1, and 169 of class 2 in the test set. This could suggest why the classifier’s performance for class 0 might not be as high as for the other classes, as there are fewer examples to learn from.</p></li>
+</ul>
+</section>
+<section id="discussion" class="level1">
+<h1>Discussion</h1>
+<ul>
+<li><p>The data is split such that a certain percentage ( 70% for training and 30% for testing). The Naive Bayes classifier was trained on the training dataset. During this phase, the model learns the relationship between the features of the input data and the target variable. It does this by analyzing the distribution of the features and computing the conditional probability of each class given an input.</p></li>
+<li><p>When we divide our data into training and testing sets, it’s important to note that the model doesn’t have any prior knowledge of the testing set. The testing set comprises both the features (independent variables) and the actual labels (the ground truth we aim to predict). To evaluate the model’s performance, we utilize a trained Naive Bayes model and apply it to predict the labels for the testing data. This involves feeding the testing set’s features into the model’s prediction function. The model then uses the probability information it acquired during training to determine the most probable label for each instance within the testing set. The predictions generated by the model for the testing set are subsequently compared against the actual labels of the testing set. This comparison serves as the test of the model’s predictive accuracy.</p></li>
+</ul>
+</section>
+<section id="visualizations-of-the-results" class="level1">
+<h1>Visualizations of the results</h1>
+<ul>
+<li>The confusion matrix below shows the true labels vs.&nbsp;the predicted labels for each class. The diagonal elements represent the number of points for which the predicted label is equal to the true label, while the off-diagonal elements are those that are mislabeled by the classifier.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/confusion.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">confusion matrix</figcaption>
+</figure>
+</div>
+<ul>
+<li><p>The training score (blue line) is the accuracy of the model on the training set. A high score indicates that the model performs well on the training data. The cross-validation score (red line) is the accuracy of the model on the validation set. A high score indicates that the model generalizes well to unseen data. The shaded areas represent the variability (standard deviation) of the scores around the mean.</p></li>
+<li><p>As the number of training samples increases, the training score decreases, which is typical because models tend to perform better when they are trained on fewer samples (they can memorize the training data). The cross-validation score generally increases with more data, which indicates that the model is generalizing better with more data. The convergence of the training and validation scores suggests that adding more training samples may not lead to significant improvements in the model’s performance. This can indicate that the model has reached its performance limit given the current features and model complexity.</p></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/learning.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">learning curve</figcaption>
+</figure>
+</div>
+<ul>
+<li><p>A validation curve is a tool used to improve the performance of a machine learning model by tuning hyperparameters. It shows the relationship between a single hyperparameter value and the model’s performance, which is measured by some scoring metric (e.g., accuracy). By observing how the training score and the cross-validation score change with different values of a hyperparameter, we can choose the best value that will hopefully generalize well to unseen data.</p></li>
+<li><p>For the Naive Bayes classifier we’ve been using, a key hyperparameter to vary could be the var_smoothing parameter of the GaussianNB classifier, which is used to specify the portion of the largest variance of all features that is added to variances for calculation stability.</p></li>
+<li><p>From the plot, we can observe how the accuracy of the model changes with different values of var_smoothing. Ideally, we’re looking for a value where the cross-validation score is high, and the gap between the training and cross-validation scores is relatively small, indicating that the model generalizes well without overfitting.</p></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/Validation.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Validation Curve</figcaption>
+</figure>
+</div>
+<ul>
+<li><em>Note: documentation process is facilitated by Chatgpt</em></li>
+</ul>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

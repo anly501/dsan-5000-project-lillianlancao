@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Portfolio - Naive Bayes</title>
+<title>Portfolio - Data Preparation</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -72,7 +72,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Naive Bayes.html">Naive Bayes</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Naive Bayes.html">Naive Bayes</a></li><li class="breadcrumb-item"><a href="./Data Preparation.html">Data Preparation</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -105,7 +105,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">
+  <a href="./About Me.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">About Me</span></a>
   </div>
 </li>
@@ -141,7 +141,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./Naive Bayes.html" class="sidebar-item-text sidebar-link active">
+            <a href="./Naive Bayes.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Naive Bayes</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -156,7 +156,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Data Preparation.html" class="sidebar-item-text sidebar-link">
+  <a href="./Data Preparation.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Data Preparation</span></a>
   </div>
 </li>
@@ -216,14 +216,21 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#why-splitting-our-dataset" id="toc-why-splitting-our-dataset" class="nav-link active" data-scroll-target="#why-splitting-our-dataset">Why splitting our dataset?</a></li>
+  <li><a href="#how-to-split-our-dataset" id="toc-how-to-split-our-dataset" class="nav-link" data-scroll-target="#how-to-split-our-dataset">How to split our dataset?</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Naive Bayes</h1>
+<h1 class="title">Data Preparation</h1>
 </div>
 
 
@@ -238,8 +245,16 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
+<section id="why-splitting-our-dataset" class="level1">
+<h1>Why splitting our dataset?</h1>
+<p>Properly splitting the dataset is fundamental to building a robust and generalizable machine learning model. The training set allows the model to learn, the validation set helps in tuning and selecting the best model, and the testing set provides an unbiased evaluation of the final model’s performance.</p>
+</section>
+<section id="how-to-split-our-dataset" class="level1">
+<h1>How to split our dataset?</h1>
+<p><strong>Stratified Split:</strong> Given that the target variable is “Adaptivity Level” (which is categorical), we might want to ensure that the distribution of classes in the target variable is preserved in both the training and testing sets. This is especially important if the classes are imbalanced. A stratified split would help in maintaining the class distribution.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

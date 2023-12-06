@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Portfolio - Feature selection for text data</title>
+<title>Portfolio - Feature selection for record data</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -72,7 +72,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Naive Bayes.html">Naive Bayes</a></li><li class="breadcrumb-item"><a href="./Feature selection text.html">Feature selection for text data</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Naive Bayes.html">Naive Bayes</a></li><li class="breadcrumb-item"><a href="./Feature selection record.html">Feature selection for record data</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -162,13 +162,13 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Feature selection record.html" class="sidebar-item-text sidebar-link">
+  <a href="./Feature selection record.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Feature selection for record data</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Feature selection text.html" class="sidebar-item-text sidebar-link active">
+  <a href="./Feature selection text.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Feature selection for text data</span></a>
   </div>
 </li>
@@ -206,12 +206,6 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./ARM.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">ARM</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./Conclusions.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Conclusions</span></a>
   </div>
@@ -227,6 +221,8 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#method" id="toc-method" class="nav-link active" data-scroll-target="#method">Method</a></li>
+  <li><a href="#data-encoding" id="toc-data-encoding" class="nav-link" data-scroll-target="#data-encoding">Data Encoding</a></li>
+  <li><a href="#feature-selection" id="toc-feature-selection" class="nav-link" data-scroll-target="#feature-selection">Feature Selection</a></li>
   </ul>
 </nav>
     </div>
@@ -235,7 +231,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Feature selection for text data</h1>
+<h1 class="title">Feature selection for record data</h1>
 </div>
 
 
@@ -252,19 +248,61 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="method" class="level1">
 <h1>Method</h1>
+<p>We can use NB in a wrapper feature selection method by assessing subsets of features with the NB algorithm. The subsets that give the best performance are considered to be the most informative features.</p>
+</section>
+<section id="data-encoding" class="level1">
+<h1>Data Encoding</h1>
 <ul>
-<li><p>Data preprocessing involves the conversion of text data into a numerical format, which is essential for training machine learning models like Naive Bayes. This transformation can be achieved using methods like TF-IDF (Term Frequency-Inverse Document Frequency) or Count Vectorization, which help represent the text as numerical features that can be utilized effectively by the Naive Bayes algorithm.</p></li>
-<li><p>We will vectorize the titles using Count Vectorization. When we convert text data into a numerical format using Count Vectorization, each unique word or token in the text becomes a feature. The value of the feature is the count of how many times that word appears in the document. In our case, the document specifically refers to titles of the news paper. So if our dataset has 10,000 unique words across all the titles, we have 10,000 features.</p></li>
-<li><p>Feature selection is a technique used to enhance a model’s performance and mitigate overfitting by picking out the most pertinent features or words from a larger pool. This process involves reducing the total number of unique words to a smaller, more relevant subset that can effectively predict the article’s topic or class labels.</p></li>
-<li><p>We will apply feature selection using the chi-squared test to reduce the number of features to the most informative ones. In text data, there can be a vast number of features (every unique word can be a feature), many of which may not be useful for making predictions. The chi-squared test is a way to handle this high dimensionality by filtering out the noise and keeping only those features that are statistically significant.</p></li>
-<li><p>Below is part of the selected features (Top 20)</p></li>
+<li>First, let’s take an overview of our dataset.</li>
+<li>We can see that all the variables are in categorical form.</li>
 </ul>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="./images/feature_text.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">feature selection</figcaption>
+<p><img src="./images/NB-1.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">overview</figcaption>
 </figure>
 </div>
+<ul>
+<li><p>Since Naive Bayes requires numerical input, we need to encode the categorical variable in the numeric format.</p></li>
+<li><p>We will use Python’s sklearn library and pandas library to do the encoding.</p></li>
+<li><p>For binary features, we can use label encoding. For features with more than two categories, we’ll use one-hot encoding.</p></li>
+<li><p>After encoding, the dataset will appear as depicted in the following illustration.</p></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/encode.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">encoding</figcaption>
+</figure>
+</div>
+</section>
+<section id="feature-selection" class="level1">
+<h1>Feature Selection</h1>
+<ul>
+<li><p>First, we’ll compute the correlation matrix for the dataset to understand the relationship between variables. And below is the heatmap that helps visualize the correlation.</p></li>
+<li><p>From the heatmap, we can identify which features are most correlated with the target from the darker area.</p></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/corr.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">correlation matrix</figcaption>
+</figure>
+</div>
+<ul>
+<li>We can also have a better understanding of the correlation by extracting the correlation values of the features with the target and sort them to identify the most relevant features for our model.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/corr-2.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">correlation</figcaption>
+</figure>
+</div>
+<ul>
+<li><p>High Positive Correlation: Features like Financial Condition_Mid and Institution Type have the strongest positive correlation with the target and are likely good predictors.</p></li>
+<li><p>High Negative Correlation: Features like Age_6-10 and Class Duration_0 have strong negative correlations and are also likely to be informative for predicting the target.</p></li>
+<li><p>Low Correlation: Features closer to zero, like Network Type_3G and Device_Mobile, may not be as useful for predicting the target by themselves.</p></li>
+<li><p>Then we need to remove features that are highly correlated with each other, keeping only one from each group of highly correlated features to avoid multicollinearity. A threshold for identifying multicollinearity will be set. If the absolute value of the correlation coefficient between two features is higher than this threshold, those features are considered multicollinear.</p></li>
+<li><p>Result: we will remove three features, which are ‘Education Level_School’, ‘Age_21-25’ and ‘Network Type_3G’.</p></li>
+</ul>
 
 
 </section>

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Portfolio - Conclusions</title>
+<title>Portfolio - Conclusions of Student Adaptability to Online Learning</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -105,7 +105,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./About Me.html" class="sidebar-item-text sidebar-link">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">About Me</span></a>
   </div>
 </li>
@@ -206,12 +206,6 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./ARM.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">ARM</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./Conclusions.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Conclusions</span></a>
   </div>
@@ -222,14 +216,25 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#data-exploration-and-demographic-insights" id="toc-data-exploration-and-demographic-insights" class="nav-link active" data-scroll-target="#data-exploration-and-demographic-insights">Data Exploration and Demographic Insights</a></li>
+  <li><a href="#naive-bayes-model-and-machine-learning-insights" id="toc-naive-bayes-model-and-machine-learning-insights" class="nav-link" data-scroll-target="#naive-bayes-model-and-machine-learning-insights">Naive Bayes Model and Machine Learning Insights</a></li>
+  <li><a href="#clustering-analysis-and-patterns-of-adaptability" id="toc-clustering-analysis-and-patterns-of-adaptability" class="nav-link" data-scroll-target="#clustering-analysis-and-patterns-of-adaptability">Clustering Analysis and Patterns of Adaptability</a></li>
+  <li><a href="#dimensionality-reduction-and-data-visualization" id="toc-dimensionality-reduction-and-data-visualization" class="nav-link" data-scroll-target="#dimensionality-reduction-and-data-visualization">Dimensionality Reduction and Data Visualization</a></li>
+  <li><a href="#decision-tree-and-random-forest-model-analysis" id="toc-decision-tree-and-random-forest-model-analysis" class="nav-link" data-scroll-target="#decision-tree-and-random-forest-model-analysis">Decision Tree and Random Forest Model Analysis</a></li>
+  <li><a href="#synthesis-and-final-considerations" id="toc-synthesis-and-final-considerations" class="nav-link" data-scroll-target="#synthesis-and-final-considerations">Synthesis and Final Considerations</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Conclusions</h1>
+<h1 class="title">Conclusions of Student Adaptability to Online Learning</h1>
 </div>
 
 
@@ -244,8 +249,47 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
+<p><strong>The project undertaken presents a holistic analysis of student adaptability to online learning, utilizing a multi-faceted approach that encompasses data exploration, various machine learning models, and clustering techniques. This report summarizes the findings from each component of the project and synthesizes them into an overarching conclusion.</strong></p>
+<section id="data-exploration-and-demographic-insights" class="level2">
+<h2 class="anchored" data-anchor-id="data-exploration-and-demographic-insights">Data Exploration and Demographic Insights</h2>
+<ul>
+<li><p>The initial phase of data exploration delved into a dataset comprising 1205 entries, encompassing 14 categorical variables. A crucial aspect of this dataset was its completeness and consistency, with no missing values and well-aligned categorical variables. The demographic analysis revealed a slight gender skew towards boys, with a significant proportion of students in the 11-25 age bracket, predominantly from non-government institutions in urban settings. This demographic distribution is crucial for understanding the context of online learning adaptability.</p></li>
+<li><p>In terms of technology access and internet connectivity, a majority of students were found to rely on mobile data connections, predominantly 4G networks, and used mobile devices for their educational needs. A notable aspect was the minimal experience of load-shedding, which positively impacts online learning continuity. The analysis also highlighted a low engagement with Learning Management Systems (LMS), a critical component of effective online education.</p></li>
+</ul>
+</section>
+<section id="naive-bayes-model-and-machine-learning-insights" class="level2">
+<h2 class="anchored" data-anchor-id="naive-bayes-model-and-machine-learning-insights">Naive Bayes Model and Machine Learning Insights</h2>
+<ul>
+<li>The project utilized a Naive Bayes classifier, split into 70% training and 30% testing data. The model focused on understanding the probabilistic relationship between various features and the adaptability levels of students. Key observations included a decrease in training score with an increase in training samples, a typical scenario in machine learning, suggesting the model’s limited capacity in handling larger datasets without overfitting. The cross-validation score’s increase with more data signified better generalization. The analysis through a validation curve informed the fine-tuning of the model, particularly focusing on the ‘var_smoothing’ parameter, which significantly influenced the model’s accuracy and generalization capabilities.</li>
+</ul>
+</section>
+<section id="clustering-analysis-and-patterns-of-adaptability" class="level2">
+<h2 class="anchored" data-anchor-id="clustering-analysis-and-patterns-of-adaptability">Clustering Analysis and Patterns of Adaptability</h2>
+<ul>
+<li>The project employed three clustering methods: K-means, Hierarchical Clustering, and DBSCAN. The findings suggested that K-means and Hierarchical Clustering were more effective, indicating the presence of roughly spherical clusters with similar densities and minimal influence from outliers or noise. Despite initially categorizing adaptability into three levels (High, Moderate, Low), the clustering results predominantly identified two main groups, correlating with “Low” and “Moderate” adaptability. This finding suggested a possible overlap in adaptability levels and highlighted the need for a more nuanced feature set to accurately distinguish between different adaptability levels.</li>
+</ul>
+</section>
+<section id="dimensionality-reduction-and-data-visualization" class="level2">
+<h2 class="anchored" data-anchor-id="dimensionality-reduction-and-data-visualization">Dimensionality Reduction and Data Visualization</h2>
+<ul>
+<li>The project employed Principal Component Analysis (PCA) and t-SNE for dimensionality reduction. PCA indicated that 17 principal components were needed to retain at least 95% of the total variance, striking a balance between dimensionality reduction and information preservation. The PCA plot suggested an overlap in adaptivity levels, indicating the complexity of the dataset and the need for more detailed analysis. The t-SNE visualization further supported this, showing distinct groupings but also highlighting overlaps, particularly between low and medium adaptivity levels. This outcome pointed to a complex interplay of various factors affecting student adaptability.</li>
+</ul>
+</section>
+<section id="decision-tree-and-random-forest-model-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="decision-tree-and-random-forest-model-analysis">Decision Tree and Random Forest Model Analysis</h2>
+<ul>
+<li>The analysis of Decision Tree and Random Forest models provided insights into model performance and the impact of hyperparameter tuning. The baseline Decision Tree model showed commendable recall rates but lagged in precision compared to the Random Forest models. The pre-tuned Random Forest model displayed significant improvements in precision and recall, particularly for class 2, with an overall accuracy of 88%. The hyperparameter-tuned Random Forest further enhanced precision and F1-scores, maintaining high accuracy while providing a more balanced classification across different classes.</li>
+</ul>
+</section>
+<section id="synthesis-and-final-considerations" class="level2">
+<h2 class="anchored" data-anchor-id="synthesis-and-final-considerations">Synthesis and Final Considerations</h2>
+<ul>
+<li><p>The comprehensive analysis conducted in this project highlights the multifaceted nature of student adaptability to online learning. It demonstrates the significant impact of demographic factors, technological access, and financial stability on the adaptability of students to online learning environments. The use of various machine learning techniques provided valuable insights, although some challenges in capturing the full complexity of student adaptability were evident.</p></li>
+<li><p>From a broader perspective, the project underscores the importance of enhancing technological infrastructure, promoting the use of LMS, and providing additional support to students from less privileged backgrounds. These interventions are vital for creating a more inclusive and effective online learning environment. The findings also suggest the need for more detailed data collection, especially concerning variables that significantly impact student adaptability, such as precise financial conditions and more granular data on technology usage.</p></li>
+</ul>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

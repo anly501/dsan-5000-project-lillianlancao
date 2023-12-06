@@ -7,7 +7,7 @@ website:
     contents:
       - href: Introduction.qmd
         text: Introduction
-      - href: About Me.qmd
+      - href: index.qmd
         text: About Me
       - href: Code.qmd
         text: Code
@@ -19,7 +19,6 @@ website:
         text: Data Cleaning
       - href: Data Exploration.qmd
         text: Data Exploration
-
       - tab: Naive Bayes
         href: Naive Bayes.qmd
         contents: 
@@ -35,16 +34,12 @@ website:
            text: Final results(record)
          - href: Final results text.qmd
            text: Final results(text)
-
-
       - href: Clustering.qmd
         text: Clustering
       - href: Dimensionality Reduction.qmd
         text: Dimensionality Reduction
       - href: Decision Trees.qmd
         text: Decision Trees
-      - href: ARM.qmd
-        text: ARM
       - href: Conclusions.qmd
         text: Conclusions
     

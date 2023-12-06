@@ -4,4 +4,4 @@ format: html
 ---
 
 
-[GitHub](https://github.com/anly501/dsan-5000-project-lillianlancao){width="200"}
+You can find all the codes on [GitHub](https://github.com/anly501/dsan-5000-project-lillianlancao){width="200"}

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Portfolio - Naive Bayes</title>
+<title>Portfolio - Data Cleaning</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -72,7 +72,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Naive Bayes.html">Naive Bayes</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Data Cleaning.html">Data Cleaning</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -105,7 +105,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">
+  <a href="./About Me.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">About Me</span></a>
   </div>
 </li>
@@ -129,7 +129,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Data Cleaning.html" class="sidebar-item-text sidebar-link">
+  <a href="./Data Cleaning.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Data Cleaning</span></a>
   </div>
 </li>
@@ -141,7 +141,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./Naive Bayes.html" class="sidebar-item-text sidebar-link active">
+            <a href="./Naive Bayes.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Naive Bayes</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -216,14 +216,21 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#first-part" id="toc-first-part" class="nav-link active" data-scroll-target="#first-part">First Part</a></li>
+  <li><a href="#second-part" id="toc-second-part" class="nav-link" data-scroll-target="#second-part">Second Part</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Naive Bayes</h1>
+<h1 class="title">Data Cleaning</h1>
 </div>
 
 
@@ -238,8 +245,78 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
+<section id="first-part" class="level1">
+<h1>First Part</h1>
+<ul>
+<li><p>Clean <strong>“virtual_school_2015.csv”</strong></p></li>
+<li><p>You can see and get the row data <a href="https://github.com/anly501/dsan-5000-project-lillianlancao/tree/main/data/00-raw-data">here</a></p></li>
+<li><p><strong>Clean Notes</strong>: since “virtual_school_2015.csv” and “virtual_school_2020” are very similar in terms of structure and variables, so here we will just how the cleaning process of “virtual_school_2015.csv” as an demonstration</p></li>
+<li><p><strong>Clean Plan</strong>: “virtual_school_2015.csv” is a large dataset that contains 52 variables and I plan to use some of them, so I will <strong>subset the dataset</strong> first. And then I will <strong>change some quantative variables to be qualitative</strong> variables because some data was transformed into numeric values and lose their original meanings. Therefore, I need to bring their original meaning back for future use.</p></li>
+</ul>
+<p><strong>Before(this is raw data)</strong></p>
+<ul>
+<li>We can see there are a lot of variables there, so I plan to make a subset</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/virtual_school_2015_p1.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">virtual_school_2015</figcaption>
+</figure>
+</div>
+<p><strong>During Data Cleaning</strong></p>
+<ul>
+<li><p>You can get the <strong>code</strong> <a href="https://github.com/anly501/dsan-5000-project-lillianlancao/tree/main/codes/01-data-gathering">here</a> to see how the data was gathered and cleaned</p></li>
+<li><p>I use <strong>tidyverse</strong> package in R to do the cleaning</p></li>
+<li><p>First choose some variables that I want to use to make a subset</p></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/subset_15.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">subset of virtual_school_2015</figcaption>
+</figure>
+</div>
+<ul>
+<li><p>Then we will filter the missing values. I don’t plan to replace the missing values because the enrollment of students is unique to every school, therefore making it meaningless to replace the missing enrollment value with any other kind of numbers. <strong>Before filtering and subsetting, the dataset has 709 rows, 52 columns. After filtering and subsetting, it has 660 rows, 9 columns. We lost around 7% data</strong></p></li>
+<li><p>The we replace the numeric values of “school_level”, “school_type”, “charter”, “magnet” to be qualitative values</p></li>
+</ul>
+<p><strong>After(this is a cleaned version)</strong></p>
+<ul>
+<li>You can get the cleaned data <a href="https://github.com/anly501/dsan-5000-project-lillianlancao/tree/main/data/01-modified-data">here</a></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/sub15.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">cleaned_subset of virtual_school_2015</figcaption>
+</figure>
+</div>
+</section>
+<section id="second-part" class="level1">
+<h1>Second Part</h1>
+<ul>
+<li>Clean text data “education_trend.json”</li>
+<li>You can get the raw data <a href="https://github.com/anly501/dsan-5000-project-lillianlancao/tree/main/data/00-raw-data">here</a></li>
+<li>We need to <strong>vectorize</strong> the data first</li>
+</ul>
+<p><strong>Before(this is raw data)</strong></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/text_data.png" width="600" height="300" class="figure-img"></p>
+<figcaption class="figure-caption">eudcation_trend</figcaption>
+</figure>
+</div>
+<p><strong>After(this is a cleaned version)</strong></p>
+<ul>
+<li>You can find the cleaned text data <a href="https://github.com/anly501/dsan-5000-project-lillianlancao/tree/main/data/01-modified-data">here</a></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./images/cleaned_textdata.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">transformed_dataframe</figcaption>
+</figure>
+</div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

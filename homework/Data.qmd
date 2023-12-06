@@ -3,3 +3,7 @@ title: "Data"
 format: html
 ---
 
+
+- For this project, I choose several datasets but mainly focus on the "students_adaptability_level_online_education" dataset. 
+- You can find all the raw data and cleaned data on [GitHub](https://github.com/anly501/dsan-5000-project-lillianlancao/tree/main/data)
+

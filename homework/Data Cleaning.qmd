@@ -3,11 +3,6 @@ title: "Data Cleaning"
 format: html
 ---
 
-# *This is Just Initial Data Cleaning*
-
-- I will only focus on the first part and the fourth part because they are pretty messy
-- The second and third part will be cleaned later because they are relatively easy to clean
-
 
 # First Part
 
@@ -50,17 +45,8 @@ format: html
 
 
 
+
 # Second Part
-
-- It will be cleaned later
-
-
-# Third Part
-
-- It will be cleaned later
-
-
-# Fourth Part
 
 - Clean text data "education_trend.json"
 - You can get the raw data [here](https://github.com/anly501/dsan-5000-project-lillianlancao/tree/main/data/00-raw-data)
